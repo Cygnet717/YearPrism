@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+}
+
+nav{
+    border:1px solid #3E3D40;
+    background-color: #047F96;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerLink{
+    text-decoration: none;
+    
+    color: black ;
+    padding: 5px;
+    margin-left: 20px;
+}
+
+.button{
+    border: 1px solid #3E3D40;
+    background-color: #5ACFD4;
+    padding: 3px;
+    cursor: pointer;
+}
+.hamburger{
+    margin-right: 20px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.burgermenu{
+    display: none;
+    right: 0;
+}
