@@ -2,27 +2,34 @@
     box-sizing: border-box;
 }
 
-nav{
-    border:1px solid #3E3D40;
-    background-color: #047F96;
+.mainNav{
+    border:2px solid #FAF2B5;
+    background-color: #F0D200;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.regLoginButtons{
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+}
+
 .headerLink{
     text-decoration: none;
-    
-    color: black ;
+    color:  rgb(138, 86, 211);
     padding: 5px;
     margin-left: 20px;
 }
 
 .button{
-    border: 1px solid #3E3D40;
-    background-color: #5ACFD4;
+    border: 1px solid #e2b2ff;
+    background-color: rgb(138, 86, 211);
     padding: 3px;
     cursor: pointer;
+    color: #F0D200;
+    text-decoration: none;
 }
 .hamburger{
     margin-right: 20px;
@@ -30,7 +37,26 @@ nav{
     cursor: pointer;
 }
 
-.burgermenu{
+.burgerhidden{
     display: none;
+}
+
+.burgermenu{
+    position: fixed;
     right: 0;
+    background-color: rgb(138, 86, 211);
+    display: flex;
+    flex-direction: column;
+}
+
+.burgermenu > a {
+    border-bottom: 1px solid #F0D200;
+    width: 100%;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration: none;
+    color: #F0D200;
 }

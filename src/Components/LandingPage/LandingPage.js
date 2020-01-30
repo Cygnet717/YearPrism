@@ -11,10 +11,10 @@ export default class LandingPage extends Component{
                 <p>How long has it been since my last tetanus shot?</p>
                 <p>How long ago did we go on that vacation?</p>
                 <p>When did we adoopt our cat Fluffy?</p>
-                <p>Easily find the answers to all these questions and more when you store all your life events and milestones in YearPrism!
+                <p>Easily find the answers to all these questions and more 
+                when you store all your life events and milestones in YearPrism!
                 </p>
-                <p>Coming Soon: Then find your friends and family and share your life history with them (dont worry you can make events private).
-                </p>
+                
                 <p>Try it out with this Demo User Account:<br/>
                     UserName: <br/>
                     Password:
