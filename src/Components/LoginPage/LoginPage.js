@@ -5,16 +5,16 @@ export default class LoginPage extends Component {
     render() {
         return(
             <div>
-                <fieldset> 
-                    <legend>LogIn</legend>
-                    <form className='loginform'>
+                <form className='loginform form'>
+                    <fieldset> 
+                        <legend>LogIn</legend>
                         User Name <input required type= 'text' name='username'/>
                         <br/>
                         Password <input required type= 'password' name='password'/>
                         <br/>
                         <input type='submit' value='Login'></input>
-                    </form>
-                </fieldset>
+                    </fieldset>
+                </form>
             </div>
         )
     }

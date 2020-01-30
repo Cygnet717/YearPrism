@@ -6,7 +6,26 @@ export default class RegisterPage extends Component {
     render() {
         return(
             <div>
-                this is the Register page
+                <form className='form'>
+                    <fieldset>
+                        <label>First Name </label>
+                        <input required type= 'text' name='username'/>
+                        <br/>
+                        <label>Last Name </label>
+                        <input required type= 'text' name='username'/>
+                        <br/>
+                        <label>User Name </label>
+                        <input required type= 'text' name='username'/>
+                        <br/>
+                        <label>Password </label>
+                        <input required type= 'password' name='password'/>
+                        <br/>
+                        <label>Retype Password </label>
+                        <input required type= 'password' name='password'/>
+                        <br/>
+                        <input type='submit' value='Build My Calendar'/>
+                    </fieldset>
+                </form>
             </div>
         )
     }
