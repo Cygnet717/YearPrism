@@ -29,6 +29,7 @@ export default class Header extends Component {
                     onClick={()=>{this.RenderBurgerMenu()}}></img>
                     
                     <nav className={this.state.burger}>
+                        
                         <Link to=''>Add Event</Link>
                         <Link to=''>Color Option</Link>
                         <Link to=''>View Option</Link>
