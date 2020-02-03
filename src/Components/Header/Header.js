@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import hamburger from '../../Images/hamburger.png';
-import './Header.css'
+import './Header.css';
 
 export default class Header extends Component {
     constructor(props){
@@ -23,24 +23,22 @@ export default class Header extends Component {
     renderHamburger(){
         return(
             <div>
-                   
-                    <img className='hamburger' 
+                <img className='hamburger' 
                     src={hamburger} alt='Hamburger Menu' 
-                    onClick={()=>{this.RenderBurgerMenu()}}></img>
-                    
-                    <nav className={this.state.burger}>
-                        
-                        <Link to=''>Add Event</Link>
-                        <Link to=''>Color Option</Link>
-                        <Link to=''>View Option</Link>
-                        <Link to=''>Delete Account</Link>
-                    </nav>
-                </div>
+                    onClick={()=>{this.RenderBurgerMenu()}}>
+                </img>  
+                <nav className={this.state.burger}> 
+                    <Link to='/Home' onClick={()=>{this.RenderBurgerMenu()}}>Home</Link>
+                    <Link to='/AddEvent' onClick={()=>{this.RenderBurgerMenu()}}>Add Event</Link>
+                    <Link to=''>Color Option</Link>
+                    <Link to=''>View Option</Link>
+                    <Link to=''>Delete Account</Link>
+                </nav>
+            </div>
         )
     }
 
     RenderBurgerMenu(){
-        console.log('click')
         if(this.state.burger === 'burgerhidden'){
             this.setState({
                 burger: 'burgermenu'
@@ -58,7 +56,7 @@ export default class Header extends Component {
                 <Link className='headerLink' to='/'>
                     <h1>YearPrism</h1>
                 </Link>
-                {true ? this.renderLogInLink() : this.renderHamburger()}
+                {false ? this.renderLogInLink() : this.renderHamburger()}
                 
             </nav>
         )

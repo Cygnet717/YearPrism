@@ -14,6 +14,7 @@ export default function Input(props) {
                 <label>Event name</label>
                 <input type='text' id='eName' placeholder={props.placeholder} size="28"/>
             </span>
+            <br/>
             <span>
                 <label>Category</label>
                 <select id='category'>
@@ -25,7 +26,7 @@ export default function Input(props) {
             </span>
             <br/>
             <label>Notes</label>
-            <input id='notes' type='textbox' size='50'/>
+            <input id='notes' type='textbox' size='44'/>
         </div>
     )
 }// add category dropdown pre set to category

@@ -10,15 +10,11 @@ export default class RegisterPage extends Component {
             step: 1,
         }
     }
-
     StepTwo(){
-
         this.setState({
             step: 2,
         })
     }
-
-
     render() {
         return(
             <div>

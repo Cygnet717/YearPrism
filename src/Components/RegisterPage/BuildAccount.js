@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AddMoreButton from './AddMoreButton';
 import './RegisterPage.css';
 import Input from './Input';
 
@@ -62,7 +61,7 @@ export default class BuildAccount extends Component {
                     <li>Medical: Teeth cleaning, tetanus shot, surgery, ect.</li>
                 </ul>
             </div>
-            <form>
+            <form className='builder'>
             <fieldset>
               <legend>Input New Event</legend>
                 <Input />

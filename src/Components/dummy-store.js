@@ -1,7 +1,11 @@
 const Store = {
+    'UserInfo':{
+        'UserName': 'Kathy Bradt',
+        'userBirthday': '1986'
+    },
     'events':[
         {
-        'eventId': 123,
+        'eventId': 120,
         'eventMonth': 'October',
         'eventYear': '2019',
         'eventName': 'Store Tattoo',
@@ -9,7 +13,7 @@ const Store = {
         'notes': 'Beloved tattoo, Dan'
         },
         {
-        'eventId': 124,
+        'eventId': 121,
         'eventMonth': 'October',
         'eventYear': '2019',
         'eventName': 'NJ visit',
@@ -17,23 +21,7 @@ const Store = {
         'notes': 'visit Lizzie, Laura, and Dave'
         },
         {
-        'eventId': 125,
-        'eventMonth': 'April',
-        'eventYear': '2019',
-        'eventName': 'began Thinkful',
-        'category': 'School',
-        'notes': 'April 24th'
-        },
-        {
-        'eventId': 126,
-        'eventMonth': 'June',
-        'eventYear': '2019',
-        'eventName': 'Alaria died',
-        'category': 'Pets',
-        'notes': ''
-        },
-        {
-        'eventId': 127,
+        'eventId': 122,
         'eventMonth': 'August',
         'eventYear': '2019',
         'eventName': 'Lizzie Born',
@@ -41,7 +29,7 @@ const Store = {
         'notes': 'Elizabeth Anne Peetz, 22hr labor, born at 8:40am, 37w5d, strong false labor 1 week prior, '
         },
         {
-        'eventId': 128,
+        'eventId': 123,
         'eventMonth': 'November',
         'eventYear': '2019',
         'eventName': 'End AERC',
@@ -49,7 +37,7 @@ const Store = {
         'notes': ''
         },
         {
-        'eventId': 129,
+        'eventId': 124,
         'eventMonth': 'January',
         'eventYear': '2018',
         'eventName': 'IUD in',
@@ -57,7 +45,7 @@ const Store = {
         'notes': ''
         },
         {
-        'eventId': 130,
+        'eventId': 125,
         'eventMonth': 'March',
         'eventYear': '2018',
         'eventName': 'Peba died',
@@ -65,37 +53,46 @@ const Store = {
         'notes': ''
         },
         {
-        'eventId': 131,
+        'eventId': 126,
         'eventMonth': 'May',
-        'eventYear': '2018',
+        'eventYear': '2017',
         'eventName': 'Surro Psyc eval',
-        'category': 'Achievement',
+        'category': 'School',
         'notes': ''
         },
         {
-        'eventId': 132,
+        'eventId': 127,
         'eventMonth': 'September',
-        'eventYear': '2018',
+        'eventYear': '2017',
         'eventName': 'Surro Wellness',
-        'category': 'Achievement',
+        'category': 'Other',
         'notes': 'Colorado trip'
         },
         {
-        'eventId': 133,
-        'eventMonth': 'October',
-        'eventYear': '2018',
-        'eventName': 'Surro Meds',
-        'category': 'Achievement',
+        'eventId': 123,
+        'eventMonth': 'November',
+        'eventYear': '2019',
+        'eventName': 'End AERC',
+        'category': 'Relationship',
         'notes': ''
         },
         {
-        'eventId': 134,
-        'eventMonth': 'November',
+        'eventId': 124,
+        'eventMonth': 'January',
         'eventYear': '2018',
-        'eventName': 'Embryo Transfer',
-        'category': 'Achievement',
-        'notes': 'November 30th in Colorado'
+        'eventName': 'IUD in',
+        'category': 'Family',
+        'notes': ''
         },
+        {
+        'eventId': 125,
+        'eventMonth': 'March',
+        'eventYear': '2018',
+        'eventName': 'Peba died',
+        'category': 'Job',
+        'notes': ''
+        },
+           
     ]
 }
 
