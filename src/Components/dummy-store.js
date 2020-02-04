@@ -8,7 +8,7 @@ const Store = {
         'eventId': 120,
         'eventMonth': 'October',
         'eventYear': '2019',
-        'eventName': 'Store Tattoo',
+        'eventName': 'Storke Tattoo',
         'category': 'Body Modification',
         'notes': 'Beloved tattoo, Dan'
         },
@@ -92,7 +92,78 @@ const Store = {
         'category': 'Job',
         'notes': ''
         },
-           
+        {
+        'eventId': 126,
+        'eventMonth': 'January',
+        'eventYear': '2013',
+        'eventName': 'Willa',
+        'category': 'Pets',
+        'notes': ''
+        },
+        {
+        'eventId': 127,
+        'eventMonth': 'May',
+        'eventYear': '2013',
+        'eventName': '1 year at the zoo',
+        'category': 'Job',
+        'notes': ''
+        },
+        {
+        'eventId': 128,
+        'eventMonth': 'May',
+        'eventYear': '2013',
+        'eventName': 'Dylan Tattoo',
+        'category': 'Body Modification',
+        'notes': ''
+        },
+        {
+        'eventId': 129,
+        'eventMonth': 'June',
+        'eventYear': '2013',
+        'eventName': 'quit Petco',
+        'category': 'Jobs',
+        'notes': ''
+        },
+        {
+        'eventId': 130,
+        'eventMonth': 'September',
+        'eventYear': '2013',
+        'eventName': '1 year aniversary',
+        'category': 'Relationship',
+        'notes': ''
+        },
+        {
+        'eventId': 131,
+        'eventMonth': 'October',
+        'eventYear': '2013',
+        'eventName': 'Ireland',
+        'category': 'Vacation',
+        'notes': ''
+        },
+        {
+        'eventId': 132,
+        'eventMonth': 'October',
+        'eventYear': '2013',
+        'eventName': 'Ireland Tattoo',
+        'category': 'Body Modification',
+        'notes': ''
+        },
+        {
+        'eventId': 133,
+        'eventMonth': 'July',
+        'eventYear': '2014',
+        'eventName': 'Edwin Born',
+        'category': 'Family',
+        'notes': ''
+        },
+        {
+        'eventId': 134,
+        'eventMonth': 'December',
+        'eventYear': '2014',
+        'eventName': 'Branch Tattoo',
+        'category': 'Body Modification',
+        'notes': ''
+        },
     ]
 }
 

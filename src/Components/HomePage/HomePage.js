@@ -85,12 +85,12 @@ export default class Home extends Component {
                         <p><img src={vacaImg} alt='Vacation'/> Vacation</p>
                         <p><img src={familyImg} alt='Family'/> Family</p>
                         <p><img src={petsImg} alt='Pets'/> Pets</p>
-                        <p><img src={otherImg} alt='Other'/> Other</p>
+                        <p><img src={otherImg} alt='Other'/>Other</p>
                     </div>
                 </div>
-                <ul className='yearlist'>
+                <div className='yearlist'>
                     {this.listYearsOfLife(Store.UserInfo.userBirthday, Store.events).map(i => {
-                    return <li key={i.year} className='yearli'>
+                    return <Link to={`/Year/${i.year}`} key={i.year} className='yearli'>
                             <img className='arrow' src={rightArrow} alt='right arrow open year'></img>
                             {i.year}&nbsp;
                             {i.Achievement > 0 ? <><img src={achievImg} alt='Achievement'/>&nbsp;</>:<span/>}
@@ -103,9 +103,9 @@ export default class Home extends Component {
                             {i.Pets > 0 ? <><img src={petsImg} alt='Pets'/>&nbsp;</>:<span/>}
                             {i.Medical > 0 ? <><img src={medImg} alt='Medical'/>&nbsp;</>:<span/>}
                             {i.Other > 0 ? <><img src={otherImg} alt='Other'/>&nbsp;</>:<span/>}
-                        </li>
+                        </Link>
                     })}
-                </ul>
+                </div>
             </div>
         )
     }

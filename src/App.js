@@ -5,7 +5,8 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import LoginPage from './Components/LoginPage/LoginPage';
 import RegisterPage from './Components/RegisterPage/RegisterPage';
 import BuildAccount from './Components/RegisterPage/BuildAccount';
-import Home from './Components/HomePage/HomePage'
+import Home from './Components/HomePage/HomePage';
+import YearViewPage from './Components/YearViewPage/YearViewPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path={'/Register'} component={RegisterPage}/>
         <Route path={'/AddEvent'} component={BuildAccount}/>
         <Route path={'/Home'} component={Home}/>
+        <Route path={'/Year/:year'} component={YearViewPage}/>
       </Switch>
     </main>
   );
