@@ -50,15 +50,15 @@ export default class BuildAccount extends Component {
             <>
             <button onClick={() => this.ShowHideSugg()}>Suggestions</button>
             <div className={this.state.suggestions}>
-                <ul>
-                    <li>School: Start a new school, graduation, ect.</li>
-                    <li>Relationship: Start a new relationship, wedding, major milestone, end relationship, ect.</li>
-                    <li>Job: Start a new job, promotion, new title, leave job, ect.</li>
-                    <li>Achievements: ran a 5K, paied off debt, bought a house, 1 year sober, ect.</li>
-                    <li>Body Modifications: Laser eye surgery, tattoo, piercing, ect.</li>
-                    <li>Family: Birth, death, adoption, marrage, divorce, ect.</li>
-                    <li>Pets: Adopted/bought new pet, medical procedures, death, ect.</li>
-                    <li>Medical: Teeth cleaning, tetanus shot, surgery, ect.</li>
+                <ul className='sugg-content'>
+                    <li className='sugg'><u>School</u>: Start a new school, graduation, ect.</li>
+                    <li className='sugg'><u>Relationship</u>: Start a new relationship, wedding, major milestone, end relationship, ect.</li>
+                    <li className='sugg'><u>Job</u>: Start a new job, promotion, new title, leave job, ect.</li>
+                    <li className='sugg'><u>Achievements</u>: ran a 5K, paied off debt, bought a house, 1 year sober, ect.</li>
+                    <li className='sugg'><u>Body Modifications</u>: Laser eye surgery, tattoo, piercing, ect.</li>
+                    <li className='sugg'><u>Family</u>: Birth, death, adoption, marrage, divorce, ect.</li>
+                    <li className='sugg'><u>Pets</u>: Adopted/bought new pet, medical procedures, death, ect.</li>
+                    <li className='sugg'><u>Medical</u>: Teeth cleaning, tetanus shot, surgery, ect.</li>
                 </ul>
             </div>
             <form className='builder'>
