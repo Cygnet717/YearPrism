@@ -41,6 +41,21 @@ export default class BuildAccount extends Component {
         document.getElementById('category').value ='default'
     }
 
+    handleClick = (e) => {
+        var dropdown = document.getElementById('suggestionsdropdown')
+        if(e.target !== dropdown && e.target.parentNode !== dropdown){
+            e.preventDefault()
+            this.setState({
+                suggestions: 'sugghidden'
+            })
+            return;
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClick)
+    }
+
     render(){
         let ListEvents = this.state.newEvents.map(i => {
                 return <p key={i.eName}>{i.date}, {i.eName}, {i.category}, {i.notes}</p>
@@ -49,7 +64,7 @@ export default class BuildAccount extends Component {
         return(
             <>
             <button onClick={() => this.ShowHideSugg()}>Suggestions</button>
-            <div className={this.state.suggestions}>
+            <div id='suggestionsdropdown' className={this.state.suggestions}>
                 <ul className='sugg-content'>
                     <li className='sugg'><u>School</u>: Start a new school, graduation, ect.</li>
                     <li className='sugg'><u>Relationship</u>: Start a new relationship, wedding, major milestone, end relationship, ect.</li>
@@ -68,9 +83,10 @@ export default class BuildAccount extends Component {
                 <button onClick={(event) =>this.AddEvent(event)}>Add Event</button>
             </fieldset>
             
-            <input type='submit' value='Done'/>
+            
           </form>
           {this.state.newEvents.length === 0 ? <></> : ListEvents}
+          <button>Done</button>
           </>
         )
     }

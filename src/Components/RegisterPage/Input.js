@@ -18,7 +18,7 @@ export default function Input(props) {
             <span>
                 <label>Category</label>
                 <select id='category'>
-                    <option  disabled hidden value='default'>Select</option>
+                    <option hidden defaultValue>Select</option>
                     {categories.map(i => {
                         return <option id='category' key={i} name='category' value={i}>{i}</option>
                     })}

@@ -23,11 +23,13 @@ export default class Home extends Component {
             key: 'hidden',
         }
     }
+
+    
     
     listYearsOfLife(year, events){
         let yearlist = []
         
-        for(let i = 2020; i> parseInt(year); i--){
+        for(let i = 2020; i>= parseInt(year); i--){
             yearlist.push({year: i, School: 0, Relationship: 0, Job: 0, Achievement: 0, BodyModification: 0, Vacation: 0, Family: 0, Pets: 0, Medical: 0, Other: 0})
         }
         events.map(i =>{
@@ -54,6 +56,21 @@ export default class Home extends Component {
                 key: 'hidden'
             })
         }
+    }
+
+    handleClick = (e) => {
+        var dropdown = document.getElementById('myModal')
+        if(e.target !== dropdown && e.target.parentNode !== dropdown){
+            e.preventDefault()
+            this.setState({
+                key: 'hidden'
+            })
+            return;
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClick)
     }
 
     render(){

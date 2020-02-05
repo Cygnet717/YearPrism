@@ -42,48 +42,58 @@ export default class YearView extends Component{
     submitChangeEvent=()=>{
         console.log('submitted')
         this.setState({
-           edit: 'hiddenEvent'
+           edit: 'hiddenEdit'
         })
     }
 
-    componentDidMount(){
+    handleClick = (e) => {
+        var dropdown = document.getElementById('editpopup')
+        console.log(dropdown)
+        
+        if(e.target !== dropdown && e.target.parentNode !== dropdown){
+            console.log(e.target.parentNode)
+            this.setState({
+                edit: 'hiddenEdit'
+            })
+            return;
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClick)
+    }
+
+    //componentDidMount(){
         //const { year }= this.props.match.params.year
 
         //fetch(what happened this year)
         //.then((yearEvents) => {
         //    this.setState(() => ({ yearEvents }))
         //})  
-    }
+    //}
 
     render(){
         const categories = ['School', 'Relationship', 'Job', 'Achievement', 'Body Modification', 'Vacation', 'Family', 'Pets', 'Medical', 'Other']
         return(
             <div>
                 <h3 className='yearheader'>{this.props.match.params.year}</h3>
-                <div className={this.state.edit}>
-                    <form className='edit-content' onSubmit={this.submitChangeEvent}>
-                        <span className="input">
-                            <label>Date</label>
-                            <input type='month' id='date' defaultValue={this.state.date}/>
-                        </span>
+                <div  className={this.state.edit}>
+                    <form id='editpopup' className='edit-content' onSubmit={this.submitChangeEvent}>
+                        <label>Date</label>
+                        <input type='month' id='date' defaultValue={this.state.date}/>
                         <br/>
-                        <span className="input">
-                            <label>Event name</label>
-                            <input type='text' id='eName' defaultValue={this.state.eventName} size="28"/>
-                        </span>
+                        <label>Event name</label>
+                        <input type='text' id='eName' defaultValue={this.state.eventName} size="28"/>
                         <br/>
-                        <span>
-                            <label>Category</label>
-                            <select id='category' >
-                                
-                                {categories.map(i => {
-                                    if(i === this.state.category){
-                                        return <option selected id='category' key={i} name='category' value={i}>{i}</option>
-                                    }
-                                    return <option id='category' key={i} name='category' value={i}>{i}</option>
-                                })}
-                            </select>
-                        </span>
+                        <label>Category</label>
+                        <select id='category' >
+                            {categories.map(i => {
+                                if(i === this.state.category){
+                                    return <option selected id='category' key={i} name='category' value={i}>{i}</option>
+                                }
+                                return <option id='category' key={i} name='category' value={i}>{i}</option>
+                            })}
+                        </select>
                         <br/>
                         <label>Notes</label>
                         <input id='notes' type='textbox' size='44' defaultValue={this.state.notes}/>

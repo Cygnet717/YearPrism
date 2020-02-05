@@ -27,7 +27,7 @@ export default class Header extends Component {
                     src={hamburger} alt='Hamburger Menu' 
                     onClick={()=>{this.RenderBurgerMenu()}}>
                 </img>  
-                <nav className={this.state.burger}> 
+                <nav id='burgerdropdown' className={this.state.burger}> 
                     <Link to='/Home' onClick={()=>{this.RenderBurgerMenu()}}>Home</Link>
                     <Link to='/AddEvent' onClick={()=>{this.RenderBurgerMenu()}}>Add Event</Link>
                     <Link to='/DeleteAccount' onClick={()=>{this.RenderBurgerMenu()}}>Delete Account</Link>
@@ -47,6 +47,22 @@ export default class Header extends Component {
             })
         }
         
+    }
+
+    
+    handleClick = (e) => {
+        var dropdown = document.getElementById('burgerdropdown')
+        if(e.target !== dropdown && e.target.parentNode !== dropdown){
+            e.preventDefault()
+            this.setState({
+                burger:'burgerhidden'
+            })
+            return;
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClick)
     }
     render(){
         return (
