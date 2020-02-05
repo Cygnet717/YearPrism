@@ -39,10 +39,10 @@ export default class YearView extends Component{
         } 
     }
 
-    submitChangeEvent(){
+    submitChangeEvent=()=>{
         console.log('submitted')
         this.setState({
-            edit: 'hiddenEvent'
+           edit: 'hiddenEvent'
         })
     }
 
@@ -69,21 +69,24 @@ export default class YearView extends Component{
                         <br/>
                         <span className="input">
                             <label>Event name</label>
-                            <input type='text' id='eName' placeholder={this.state.eventName} size="28"/>
+                            <input type='text' id='eName' defaultValue={this.state.eventName} size="28"/>
                         </span>
                         <br/>
                         <span>
                             <label>Category</label>
-                            <select id='category' value={this.state.category}>
-                                <option  disabled hidden >{this.state.category}</option>
+                            <select id='category' >
+                                
                                 {categories.map(i => {
+                                    if(i === this.state.category){
+                                        return <option selected id='category' key={i} name='category' value={i}>{i}</option>
+                                    }
                                     return <option id='category' key={i} name='category' value={i}>{i}</option>
                                 })}
                             </select>
                         </span>
                         <br/>
                         <label>Notes</label>
-                        <input id='notes' type='textbox' size='44' placeholder={this.state.notes}/>
+                        <input id='notes' type='textbox' size='44' defaultValue={this.state.notes}/>
                         <br/>
                         <input type='submit'/>
                     </form>

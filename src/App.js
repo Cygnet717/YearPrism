@@ -7,6 +7,7 @@ import RegisterPage from './Components/RegisterPage/RegisterPage';
 import BuildAccount from './Components/RegisterPage/BuildAccount';
 import Home from './Components/HomePage/HomePage';
 import YearViewPage from './Components/YearViewPage/YearViewPage';
+import DeleteAccount from './Components/DeleteAccount/DeleteAccount';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path={'/AddEvent'} component={BuildAccount}/>
         <Route path={'/Home'} component={Home}/>
         <Route path={'/Year/:year'} component={YearViewPage}/>
+        <Route path={'/DeleteAccount'} component={DeleteAccount}/>
       </Switch>
     </main>
   );

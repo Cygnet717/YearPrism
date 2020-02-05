@@ -1,0 +1,20 @@
+.deletebutton {
+    margin: 20px;
+    padding: 5px;
+    width: fit-content;
+    text-decoration: none;
+    color: black;
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+.buttonbox{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.deletequestion {
+    margin-right: auto;
+    margin-left: auto;
+    width: fit-content;
+}

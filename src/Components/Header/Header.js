@@ -31,8 +31,7 @@ export default class Header extends Component {
                     <Link to='/Home' onClick={()=>{this.RenderBurgerMenu()}}>Home</Link>
                     <Link to='/AddEvent' onClick={()=>{this.RenderBurgerMenu()}}>Add Event</Link>
                     <Link to=''>Color Option</Link>
-                    <Link to=''>View Option</Link>
-                    <Link to=''>Delete Account</Link>
+                    <Link to='/DeleteAccount' onClick={()=>{this.RenderBurgerMenu()}}>Delete Account</Link>
                 </nav>
             </div>
         )

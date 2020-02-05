@@ -4,7 +4,7 @@ import './LandingPage.css'
 export default class LandingPage extends Component{
     render(){
         return(
-            <div className='test'>
+            <div className='intro'>
                
                 <p>When exactlly did I get this tattoo?</p>
                 <p>What month did I start that job 5 years ago?</p>
