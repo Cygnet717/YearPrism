@@ -25,6 +25,6 @@ function App() {
     </main>
   );
 }
-// <footer role="content-info">Created my free logo at LogoMakr.com</footer>
+
 //cursor: progress or wait for thinking
 export default App;

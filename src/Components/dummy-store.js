@@ -1,7 +1,7 @@
 const Store = {
     'UserInfo':{
-        'UserName': 'Kathy Bradt',
-        'userBirthday': '1986'
+        'username': 'Kathy Bradt',
+        'birthyear': '1986'
     },
     'eventsFiltered': [
         {
@@ -9,7 +9,7 @@ const Store = {
             'eventMonth': 'October',
             'eventYear': '2019',
             'eventName': 'Storke Tattoo',
-            'category': 'Body Modification',
+            'category': 'Home',
             'notes': 'Beloved tattoo, Dan'
             },
             {
@@ -17,7 +17,7 @@ const Store = {
             'eventMonth': 'October',
             'eventYear': '2019',
             'eventName': 'NJ visit',
-            'category': 'Vacation',
+            'category': 'Home',
             'notes': 'visit Lizzie, Laura, and Dave'
             },
             {
@@ -43,7 +43,7 @@ const Store = {
         'eventMonth': 'October',
         'eventYear': '2019',
         'eventName': 'Storke Tattoo',
-        'category': 'Body Modification',
+        'category': 'Home',
         'notes': 'Beloved tattoo, Dan'
         },
         {
@@ -155,7 +155,7 @@ const Store = {
         'eventMonth': 'June',
         'eventYear': '2013',
         'eventName': 'quit Petco',
-        'category': 'Jobs',
+        'category': 'Home',
         'notes': ''
         },
         {

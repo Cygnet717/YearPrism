@@ -2,7 +2,7 @@ import React from 'react';
 
 
 export default function Input(props) {
-    const categories = ['School', 'Relationship', 'Job', 'Achievement', 'Body Modification', 'Vacation', 'Family', 'Pets', 'Medical', 'Other']
+    const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
     return(
         <div>
             <span className="input">
@@ -29,4 +29,4 @@ export default function Input(props) {
             <input id='notes' type='textbox' size='44'/>
         </div>
     )
-}// add category dropdown pre set to category
+}

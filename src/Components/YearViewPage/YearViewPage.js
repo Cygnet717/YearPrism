@@ -3,8 +3,6 @@ import Store from '../dummy-store';
 import './YearViewPage.css';
 import editImg from '../../Images/edit.png';
 
-//<div>Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a></div>
-
 export default class YearView extends Component{
     static defaultProps ={
         match: { params: {}},
@@ -73,7 +71,7 @@ export default class YearView extends Component{
     //}
 
     render(){
-        const categories = ['School', 'Relationship', 'Job', 'Achievement', 'Body Modification', 'Vacation', 'Family', 'Pets', 'Medical', 'Other']
+        const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
             <div>
                 <h3 className='yearheader'>{this.props.match.params.year}</h3>

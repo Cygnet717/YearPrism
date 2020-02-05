@@ -13,14 +13,11 @@ export default class CreateAccount extends Component {
                 <form className='form' onSubmit={(e) => {this.nextSection(e)}}>
                     <fieldset>
                         <legend>Create Account</legend>
-                        <label>First Name </label>
-                        <input required type= 'text' name='username'/>
-                        <br/>
-                        <label>Last Name </label>
-                        <input required type= 'text' name='username'/>
-                        <br/>
                         <label>User Name </label>
                         <input required type= 'text' name='username'/>
+                        <br/>
+                        <label>Birth Year</label>
+                        <input required type='year' name='birthyear'/>
                         <br/>
                         <label>Password </label>
                         <input required type= 'password' name='password'/>
