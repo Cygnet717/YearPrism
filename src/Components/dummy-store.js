@@ -3,6 +3,40 @@ const Store = {
         'UserName': 'Kathy Bradt',
         'userBirthday': '1986'
     },
+    'eventsFiltered': [
+        {
+            'eventId': 120,
+            'eventMonth': 'October',
+            'eventYear': '2019',
+            'eventName': 'Storke Tattoo',
+            'category': 'Body Modification',
+            'notes': 'Beloved tattoo, Dan'
+            },
+            {
+            'eventId': 121,
+            'eventMonth': 'October',
+            'eventYear': '2019',
+            'eventName': 'NJ visit',
+            'category': 'Vacation',
+            'notes': 'visit Lizzie, Laura, and Dave'
+            },
+            {
+            'eventId': 122,
+            'eventMonth': 'August',
+            'eventYear': '2019',
+            'eventName': 'Lizzie Born',
+            'category': 'Achievement',
+            'notes': 'Elizabeth Anne Peetz, 22hr labor, born at 8:40am, 37w5d, strong false labor 1 week prior, '
+            },
+            {
+            'eventId': 123,
+            'eventMonth': 'November',
+            'eventYear': '2019',
+            'eventName': 'End AERC',
+            'category': 'Jobs',
+            'notes': ''
+            },
+    ],
     'events':[
         {
         'eventId': 120,
