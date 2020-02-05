@@ -46,7 +46,7 @@ export default class YearView extends Component{
 
     handleClick = (e) => {
         var dropdown = document.getElementById('editpopup')
-        console.log(dropdown)
+        console.log('edit click')
         
         if(e.target !== dropdown && e.target.parentNode !== dropdown){
             console.log(e.target.parentNode)

@@ -48,22 +48,7 @@ export default class Header extends Component {
         }
         
     }
-
     
-    handleClick = (e) => {
-        var dropdown = document.getElementById('burgerdropdown')
-        if(e.target !== dropdown && e.target.parentNode !== dropdown){
-            e.preventDefault()
-            this.setState({
-                burger:'burgerhidden'
-            })
-            return;
-        }
-    }
-
-    componentDidMount() {
-        document.addEventListener('mousedown', this.handleClick)
-    }
     render(){
         return (
             <nav className='mainNav'>

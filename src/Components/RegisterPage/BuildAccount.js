@@ -41,21 +41,6 @@ export default class BuildAccount extends Component {
         document.getElementById('category').value ='default'
     }
 
-    handleClick = (e) => {
-        var dropdown = document.getElementById('suggestionsdropdown')
-        if(e.target !== dropdown && e.target.parentNode !== dropdown){
-            e.preventDefault()
-            this.setState({
-                suggestions: 'sugghidden'
-            })
-            return;
-        }
-    }
-
-    componentDidMount() {
-        document.addEventListener('mousedown', this.handleClick)
-    }
-
     render(){
         let ListEvents = this.state.newEvents.map(i => {
                 return <p key={i.eName}>{i.date}, {i.eName}, {i.category}, {i.notes}</p>
