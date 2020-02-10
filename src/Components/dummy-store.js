@@ -11,6 +11,7 @@ const Store = {
             'eventYear': '2019',
             'eventName': 'Storke Tattoo',
             'category': 'Home',
+            'eventImage': 'samples/bike.jpg',
             'notes': 'Beloved tattoo, Dan'
             },
             {
@@ -19,6 +20,7 @@ const Store = {
             'eventYear': '2019',
             'eventName': 'NJ visit',
             'category': 'Home',
+            'eventImage': 'samples/ecommerce/car-interior-design.jpg',
             'notes': 'visit Lizzie, Laura, and Dave'
             },
             {
@@ -27,6 +29,7 @@ const Store = {
             'eventYear': '2019',
             'eventName': 'Lizzie Born',
             'category': 'Achievement',
+            'eventImage': 'samples/sheep.jpg',
             'notes': 'Elizabeth Anne Peetz, 22hr labor, born at 8:40am, 37w5d, strong false labor 1 week prior, '
             },
             {
@@ -35,7 +38,8 @@ const Store = {
             'eventYear': '2019',
             'eventName': 'End AERC',
             'category': 'Jobs',
-            'notes': ''
+            'eventImage': 'sample.jpg',
+            'notes': null
             },
     ],
     'events':[

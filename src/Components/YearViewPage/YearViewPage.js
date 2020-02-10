@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Store from '../dummy-store';
 import './YearViewPage.css';
 import editImg from '../../Images/edit.png';
+import {Image, Transformation, CloudinaryContext} from 'cloudinary-react';
 
 export default class YearView extends Component{
     static defaultProps ={
@@ -101,7 +102,11 @@ export default class YearView extends Component{
                     </form>
                 </div> 
                 {this.state.FilteredEvents.map(i => {
-                    return <div className='indivevent' id={i.eventId} key={i.eventId}>{i.eventMonth}&emsp;{i.eventName}<br/> Notes: {i.notes}
+                    return <div className='indivevent' id={i.eventId} key={i.eventId}>
+                        <p className='eventInfo'>{i.eventMonth}&emsp;{i.eventName}<br/> Notes: {i.notes}</p>
+                        <div className='imagebox'>
+                        <Image className='eventImage' cloudName="dingowidget" publicId={i.eventImage} width="100" crop="scale" />
+                        </div>
                     <img className='editIcon' src={editImg} alt='edit' onClick={() => this.showEditFeature(i)}/>
             </div>
                 })}
