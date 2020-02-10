@@ -1,5 +1,6 @@
 const Store = {
     'UserInfo':{
+        'user_id': '1',
         'username': 'Kathy Bradt',
         'birthyear': '1986'
     },

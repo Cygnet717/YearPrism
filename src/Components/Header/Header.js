@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import hamburger from '../../Images/hamburger.png';
+import UserContext from '../../Context/user-context';
 import './Header.css';
 
 export default class Header extends Component {
+    static contextType = UserContext;
     constructor(props){
         super(props)
         this.state = {
@@ -55,7 +57,7 @@ export default class Header extends Component {
                 <Link className='headerLink' to='/'>
                     <h1>YearPrism</h1>
                 </Link>
-                {false ? this.renderLogInLink() : this.renderHamburger()}
+                {this.context.user_id? this.renderHamburger() : this.renderLogInLink() }
                 
             </nav>
         )

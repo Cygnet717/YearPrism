@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Store from '../dummy-store';
+import UserContext from '../../Context/user-context';
 import { Link } from 'react-router-dom';
 import rightArrow from '../../Images/rightArrow.png';
 import Footer from '../Footer/Footer';
@@ -17,6 +17,7 @@ import vacaImg from '../../Images/006-vacation.png';
 import otherImg from '../../Images/010-other.png';
 
 export default class Home extends Component {
+    static contextType = UserContext;
     constructor(props){
         super(props)
         this.state ={
@@ -106,7 +107,7 @@ export default class Home extends Component {
                     </div>
                 </div>
                 <div className='yearlist'>
-                    {this.listYearsOfLife(Store.UserInfo.birthyear, Store.events).map(i => {
+                    {this.listYearsOfLife(this.context.birthyear, this.context.events).map(i => {
                     return <Link to={`/Year/${i.year}`} key={i.year} className='yearli'>
                             <img className='arrow' src={rightArrow} alt='right arrow open year'></img>
                             {i.year}&nbsp;

@@ -17,9 +17,10 @@ export default class YearView extends Component{
             eventName: '',
             category: '',
             notes: '',
+            FilteredEvents: Store.eventsFiltered,
         }
     }
-
+// this part will change when data come back in 2020-02 format
     showEditFeature(event){
         let month = (new Date(Date.parse(event.eventMonth + "1, 2020")).getMonth()+1)
         if(month <10){
@@ -98,8 +99,8 @@ export default class YearView extends Component{
                         <br/>
                         <input type='submit'/>
                     </form>
-                </div>
-                {Store.eventsFiltered.map(i => {
+                </div> 
+                {this.state.FilteredEvents.map(i => {
                     return <div className='indivevent' id={i.eventId} key={i.eventId}>{i.eventMonth}&emsp;{i.eventName}<br/> Notes: {i.notes}
                     <img className='editIcon' src={editImg} alt='edit' onClick={() => this.showEditFeature(i)}/>
             </div>
