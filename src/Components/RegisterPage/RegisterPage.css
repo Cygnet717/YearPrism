@@ -2,6 +2,10 @@
     display: none;
 }
 
+.red{
+  color: red;
+}
+
 .suggshow{
   display: block; 
   position: fixed;

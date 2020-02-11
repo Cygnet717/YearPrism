@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import hamburger from '../../Images/hamburger.png';
 import UserContext from '../../Context/user-context';
+import TokenService from '../../Services/token-service';
 import './Header.css';
 
 export default class Header extends Component {
@@ -32,10 +33,15 @@ export default class Header extends Component {
                 <nav id='burgerdropdown' className={this.state.burger}> 
                     <Link to='/Home' onClick={()=>{this.RenderBurgerMenu()}}>Home</Link>
                     <Link to='/AddEvent' onClick={()=>{this.RenderBurgerMenu()}}>Add Event</Link>
+                    <Link to='/Home' onClick={() => {this.logoutClick()}}>LogOut</Link>
                     <Link to='/DeleteAccount' onClick={()=>{this.RenderBurgerMenu()}}>Delete Account</Link>
                 </nav>
             </div>
         )
+    }
+
+    logoutClick(){
+        //TokenService.clearAuthToken()
     }
 
     RenderBurgerMenu(){

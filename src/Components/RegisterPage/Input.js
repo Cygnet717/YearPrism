@@ -21,7 +21,7 @@ export default function Input(props) {
             <br/>
             <label>Add an image</label><br/>
             <input name="file" type="file"
-                class="file-upload" data-cloudinary-field="image_id"
+                className="file-upload" data-cloudinary-field="image_id"
                 data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/>
             <br/>
             <label>Notes </label>
