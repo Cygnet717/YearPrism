@@ -23,16 +23,11 @@ export default class YearView extends Component{
     }
 // this part will change when data come back in 2020-02 format
     showEditFeature(event){
-        let month = (new Date(Date.parse(event.eventMonth + "1, 2020")).getMonth()+1)
-        if(month <10){
-            month = '0' + month
-        }
-        let formatedDate = event.eventYear + '-' + month;
         if(this.state.edit === 'hiddenEdit'){
             this.setState({
                 edit: 'showEdit',
-                date: formatedDate,
-                eventName: event.eventName,
+                date: event.eventdate,
+                eventName: event.eventname,
                 category: event.category,
                 notes: event.notes,
             })
@@ -46,22 +41,6 @@ export default class YearView extends Component{
         })
     }
 
-    handleClick = (e) => {
-        var dropdown = document.getElementById('editpopup')
-        console.log('edit click')
-        
-        if(e.target !== dropdown && e.target.parentNode !== dropdown){
-            console.log(e.target.parentNode)
-            this.setState({
-                edit: 'hiddenEdit'
-            })
-            return;
-        }
-    }
-
-    componentDidMount() {
-        document.addEventListener('mousedown', this.handleClick)
-    }
 
     //componentDidMount(){
         //const { year }= this.props.match.params.year
@@ -73,6 +52,9 @@ export default class YearView extends Component{
     //}
 
     render(){
+        
+        let thing  = new Date(this.state.FilteredEvents[0].eventdate)
+        console.log(thing.toDateString())
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
             <div>
@@ -80,10 +62,10 @@ export default class YearView extends Component{
                 <div  className={this.state.edit}>
                     <form id='editpopup' className='edit-content' onSubmit={this.submitChangeEvent}>
                         <label>Date</label>
-                        <input type='month' id='date' defaultValue={this.state.date}/>
+                        <input type='date' id='date' defaultValue={this.state.eventdate}/>
                         <br/>
                         <label>Event name</label>
-                        <input type='text' id='eName' defaultValue={this.state.eventName} size="28"/>
+                        <input type='text' id='eName' defaultValue={this.state.eventname} size="28"/>
                         <br/>
                         <label>Category</label>
                         <select id='category' >
@@ -102,8 +84,9 @@ export default class YearView extends Component{
                     </form>
                 </div> 
                 {this.state.FilteredEvents.map(i => {
+                    let date = new Date(i.eventdate)
                     return <div className='indivevent' id={i.eventId} key={i.eventId}>
-                        <p className='eventInfo'>{i.eventMonth}&emsp;{i.eventName}<br/> Notes: {i.notes}</p>
+                        <p className='eventInfo'>{date.toDateString()}&emsp;{i.eventname}<br/> Notes: {i.notes}</p>
                         <div className='imagebox'>
                         <Image className='eventImage' cloudName="dingowidget" publicId={i.eventImage} width="100" crop="scale" />
                         </div>

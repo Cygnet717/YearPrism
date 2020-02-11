@@ -6,7 +6,7 @@ export default function Input(props) {
     return(
         <div>
             <label>Date </label><br/>
-            <input type='month' id='date'/>
+            <input type='date' id='date'/>
             <br/>
             <label>Event name </label><br/>
             <input type='text' id='eName' placeholder={props.placeholder} size="28"/>

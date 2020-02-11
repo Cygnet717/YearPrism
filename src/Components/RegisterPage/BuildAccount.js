@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import EventsService from '../../Services/events-service';
+import UserContext from '../../Context/user-context';
 import './RegisterPage.css';
 import Input from './Input';
 
 
 export default class BuildAccount extends Component {
+    static contextType = UserContext;
     constructor(props){
         super(props)
         
@@ -12,6 +15,13 @@ export default class BuildAccount extends Component {
             suggestions: 'sugghidden',
         }
     }
+
+    static defaultProps = {
+        location: {},
+        history: {
+          push: () => {},
+        },
+      }
 
     ShowHideSugg() {
         if(this.state.suggestions === 'sugghidden'){
@@ -29,8 +39,8 @@ export default class BuildAccount extends Component {
         event.preventDefault()
         this.setState({
             newEvents: this.state.newEvents.concat({
-                date: document.getElementById('date').value,
-                eName: document.getElementById('eName').value,
+                eventdate: document.getElementById('date').value,
+                eventname: document.getElementById('eName').value,
                 category: document.getElementById('category').value,
                 notes: document.getElementById('notes').value
             })
@@ -41,9 +51,18 @@ export default class BuildAccount extends Component {
         document.getElementById('category').value ='default'
     }
 
+    submitNewEvents() {
+        this.state.newEvents.map(i => {
+            EventsService.postNewEvent(this.context.user_id, i)
+        })
+        const { location, history } = this.props
+        const destination = (location.state || {}).from || '/Home'
+        history.push(destination)
+    }
+
     render(){
         let ListEvents = this.state.newEvents.map(i => {
-                return <p key={i.eName}>{i.date}, {i.eName}, {i.category}, {i.notes}</p>
+                return <p key={i.eventname}>{i.eventdate}, {i.eventname}, {i.category}, {i.notes}</p>
             })
 
         return(
@@ -72,7 +91,7 @@ export default class BuildAccount extends Component {
             
           </form>
           {this.state.newEvents.length === 0 ? <></> : ListEvents}
-          <button>Done</button>
+          <button onClick={() => this.submitNewEvents()}>Done</button>
           </>
         )
     }
