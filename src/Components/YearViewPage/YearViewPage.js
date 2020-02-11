@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Store from '../dummy-store';
+import { Link } from 'react-router-dom';
+import EventsService from '../../Services/events-service';
 import './YearViewPage.css';
 import editImg from '../../Images/edit.png';
 import {Image, Transformation, CloudinaryContext} from 'cloudinary-react';
@@ -12,13 +13,12 @@ export default class YearView extends Component{
     constructor(props){
         super(props)
         this.state ={
-            yearEvents : null,
+            yearEvents : [],
             edit: 'hiddenEdit',
             date: '',
             eventName: '',
             category: '',
             notes: '',
-            FilteredEvents: Store.eventsFiltered,
         }
     }
 // this part will change when data come back in 2020-02 format
@@ -41,20 +41,18 @@ export default class YearView extends Component{
         })
     }
 
-
-    //componentDidMount(){
-        //const { year }= this.props.match.params.year
-
-        //fetch(what happened this year)
-        //.then((yearEvents) => {
-        //    this.setState(() => ({ yearEvents }))
-        //})  
-    //}
+    componentDidMount(){
+        const year = this.props.match.params.year
+        EventsService.getYearEvents(year)
+        .then(year => {
+            console.log(year)
+            this.setState({
+                yearEvents: year.rows
+            })
+        })  
+    }
 
     render(){
-        
-        let thing  = new Date(this.state.FilteredEvents[0].eventdate)
-        console.log(thing.toDateString())
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
             <div>
@@ -83,16 +81,20 @@ export default class YearView extends Component{
                         <input type='submit'/>
                     </form>
                 </div> 
-                {this.state.FilteredEvents.map(i => {
-                    let date = new Date(i.eventdate)
-                    return <div className='indivevent' id={i.eventId} key={i.eventId}>
-                        <p className='eventInfo'>{date.toDateString()}&emsp;{i.eventname}<br/> Notes: {i.notes}</p>
+                {this.state.yearEvents.map(i => {
+                let date = new Date(i.eventdate)
+                return <div className='indivevent' id={i.eventId} key={i.eventId}>
+                        <p className='eventInfo'>{date.toDateString()}<br/>{i.eventname}<br/> Notes: {i.notes}</p>
                         <div className='imagebox'>
-                        <Image className='eventImage' cloudName="dingowidget" publicId={i.eventImage} width="100" crop="scale" />
+                            <Image className='eventImage' cloudName="dingowidget" publicId={i.eventImage} width="100" crop="scale" />
                         </div>
-                    <img className='editIcon' src={editImg} alt='edit' onClick={() => this.showEditFeature(i)}/>
-            </div>
-                })}
+                        <img className='editIcon' src={editImg} alt='edit' onClick={() => this.showEditFeature(i)}/>
+                    </div>
+                })
+                }
+                <div className='linkDiv'>
+                <Link to={'/AddEvent'} className='addeventlink'>AddEvent</Link>
+                </div>
             </div>
         )
     }

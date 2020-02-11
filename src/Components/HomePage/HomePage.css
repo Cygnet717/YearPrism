@@ -17,6 +17,26 @@
   width: 90%;
 }
 
+.homenav{
+  border: 1px soild black;
+  margin: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.homeeventbutton{
+  padding: 5px;
+  background-color: #F0D200;
+  border: 1px solid black;
+}
+
+.homeeventlink{
+  background-color: #F0D200;
+  text-decoration: none;
+  padding: 3px;
+  border: 1px solid black;
+}
+
 .hidden{
   display: none;
     

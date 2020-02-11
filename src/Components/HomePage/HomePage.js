@@ -30,7 +30,7 @@ export default class Home extends Component {
         let yearlist = []
         
         for(let i = 2020; i>= parseInt(year); i--){
-            yearlist.push({year: i, Achievement: 0,  BodyModification: 0, Family: 0, Home: 0, Job: 0, Medical: 0,  Pets: 0, Relationship: 0, School: 0,  Vacation: 0,  Other: 0})
+            yearlist.push({year: i, Achievements: 0,  BodyModification: 0, Family: 0, Home: 0, Job: 0, Medical: 0,  Pets: 0, Relationship: 0, School: 0,  Vacation: 0,  Other: 0})
         }
         events.map(i =>{
             let cat = i.category;
@@ -69,14 +69,10 @@ export default class Home extends Component {
         }
     }
 
-    componentWillMount() {
-        EventsService.getEvents()
-    .then(events => this.context.updateEvents(events))
-    }
-
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClick)
-        
+        EventsService.getEvents()
+    .then(events => this.context.updateEvents(events))
     }
 
     render(){
@@ -84,7 +80,10 @@ export default class Home extends Component {
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
             <div>
-                <Link to='/AddEvent'>Add Event</Link>
+                <div className='homenav'>
+                    <Link to='/AddEvent' className='homeeventlink'>Add Event</Link>
+                    <button onClick={() =>this.showImgKey()} className='homeeventbutton'>Symbol Key</button>
+                </div>
                 <form>
                     <fieldset>
                         <label>Search: </label>
@@ -97,10 +96,9 @@ export default class Home extends Component {
                         </select>
                     </fieldset>
                 </form>
-                <button onClick={() =>this.showImgKey()}>Symbol Key</button>
                 <div id='myModal' className={this.state.key}>
                     <div className='modal-content'>
-                        <p><img src={achievImg} alt='Achievement'/> Achievement</p>
+                        <p><img src={achievImg} alt='Achievements'/> Achievements</p>
                         <p><img src={modImg} alt='BodyModification'/> Body Modification</p>
                         <p><img src={familyImg} alt='Family'/> Family</p>
                         <p><img src={homeImg} alt='Home'/> Home</p>
@@ -118,7 +116,7 @@ export default class Home extends Component {
                     return <Link to={`/Year/${i.year}`} key={i.year} className='yearli'>
                             <img className='arrow' src={rightArrow} alt='right arrow open year'></img>
                             {i.year}&nbsp;
-                            {i.Achievement > 0 ? <><img src={achievImg} alt='Achievement'/>&nbsp;</>:<span/>}
+                            {i.Achievements > 0 ? <><img src={achievImg} alt='Achievements'/>&nbsp;</>:<span/>}
                             {i.BodyModification > 0 ? <><img src={modImg} alt='BodyModification'/>&nbsp;</>:<span/>}
                             {i.Family > 0 ? <><img src={familyImg} alt='Family'/>&nbsp;</>:<span/>}
                             {i.Home > 0 ? <><img src={homeImg} alt='Home'/>&nbsp;</>:<span/>}

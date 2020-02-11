@@ -10,6 +10,20 @@
     text-align: center;
 }
 
+.linkDiv{
+    width: fit-content;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.addeventlink{
+    background-color: #F0D200;
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid black;
+}
+
 .editIcon{
     align-self: flex-end;
     height: 15px;

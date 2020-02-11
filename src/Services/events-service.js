@@ -16,8 +16,8 @@ const EventsApiService = {
       )
   },
 
-  getYearEvents() {
-    return fetch(`${config.API_YearPrism}/events/:year`, {
+  getYearEvents(year) {
+    return fetch(`${config.API_YearPrism}/events/${year}`, {
         method: 'GET',
         headers: {
             'authorization': `bearer ${TokenService.getAuthToken()}`

@@ -22,7 +22,6 @@ class UserProvider extends Component {
             window.sessionStorage.setItem(config.BIRTHYEAR, user.birthyear)
         },
         updateEvents: (events) => {
-            console.log(events)
             this.setState({
                 events: events,
             })
