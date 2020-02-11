@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserContext from '../../Context/user-context';
+import EventsService from '../../Services/events-service';
 import { Link } from 'react-router-dom';
 import rightArrow from '../../Images/rightArrow.png';
 import Footer from '../Footer/Footer';
@@ -33,7 +34,7 @@ export default class Home extends Component {
         }
         events.map(i =>{
             let cat = i.category;
-            const found = yearlist.findIndex(j => j.year === parseInt(i.eventYear))
+            const found = yearlist.findIndex(j => j.year === parseInt(i.eventdate.slice(0, 4)))
             for (let [key, value] of Object.entries(yearlist[found])){
              
                 if(key === cat.replace(/\s/g, '')){
@@ -68,8 +69,14 @@ export default class Home extends Component {
         }
     }
 
+    componentWillMount() {
+        EventsService.getEvents()
+    .then(events => this.context.updateEvents(events))
+    }
+
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClick)
+        
     }
 
     render(){

@@ -33,7 +33,7 @@ export default class Header extends Component {
                 <nav id='burgerdropdown' className={this.state.burger}> 
                     <Link to='/Home' onClick={()=>{this.RenderBurgerMenu()}}>Home</Link>
                     <Link to='/AddEvent' onClick={()=>{this.RenderBurgerMenu()}}>Add Event</Link>
-                    <Link to='/Home' onClick={() => {this.logoutClick()}}>LogOut</Link>
+                    <Link to='/' onClick={() => {this.logoutClick()}}>LogOut</Link>
                     <Link to='/DeleteAccount' onClick={()=>{this.RenderBurgerMenu()}}>Delete Account</Link>
                 </nav>
             </div>
@@ -41,7 +41,8 @@ export default class Header extends Component {
     }
 
     logoutClick(){
-        //TokenService.clearAuthToken()
+        TokenService.clearAuthToken()
+        this.context.clearUserInfo()
     }
 
     RenderBurgerMenu(){
