@@ -9,6 +9,7 @@ import UserProvider from '../src/Context/user-provider';
 import Home from './Components/HomePage/HomePage';
 import YearViewPage from './Components/YearViewPage/YearViewPage';
 import DeleteAccount from './Components/DeleteAccount/DeleteAccount';
+import SearchResults from './Components/SearchResults/SearchResults';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path={'/Home'} component={Home}/>
           <Route path={'/Year/:year'} component={YearViewPage}/>
           <Route path={'/DeleteAccount'} component={DeleteAccount}/>
+          <Route path={'/Search/:Category'} component={SearchResults}/>
         </Switch>
       </main>
     </UserProvider>

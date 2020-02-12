@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EventsService from '../../Services/events-service';
 import UserContext from '../../Context/user-context';
+import { Link } from 'react-router-dom';
 import './RegisterPage.css';
 import Input from './Input';
 
@@ -13,6 +14,7 @@ export default class BuildAccount extends Component {
         this.state ={
             newEvents: [],
             suggestions: 'sugghidden',
+            error: null,
         }
     }
 
@@ -52,13 +54,21 @@ export default class BuildAccount extends Component {
     }
 
     submitNewEvents() {
+        
         this.state.newEvents.map(i => {
             EventsService.postNewEvent(this.context.user_id, i)
+            .catch(res => this.setState({ error: res.error }))
+            return 'return'
         })
+        if(this.state.error === null){ this.movePage() }
+        return 'return'
+    }
+
+    movePage = () => {
         const { location, history } = this.props
         const destination = (location.state || {}).from || '/Home'
         history.push(destination)
-    }
+      };
 
     render(){
         let ListEvents = this.state.newEvents.map(i => {
@@ -87,11 +97,13 @@ export default class BuildAccount extends Component {
                 <Input />
                 <button onClick={(event) =>this.AddEvent(event)}>Add Event</button>
             </fieldset>
-            
-            
           </form>
           {this.state.newEvents.length === 0 ? <></> : ListEvents}
-          <button onClick={() => this.submitNewEvents()}>Done</button>
+          <Link to={'/Home'} onClick={() => this.submitNewEvents()}>Done</Link>
+          
+          <div role='alert'>
+                    {this.state.error && <p className='red'>{this.state.error}</p>}
+                </div>
           </>
         )
     }

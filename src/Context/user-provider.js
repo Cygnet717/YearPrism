@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import UserContext from './user-context';
-import dummyData from '../Components/dummy-store';
 import config from '../Config';
 
 
@@ -10,8 +9,10 @@ class UserProvider extends Component {
         user_id: '' || window.sessionStorage.user_id,
         birthyear: '' || window.sessionStorage.birthyear,
         username: '' || window.sessionStorage.username,
+        authToken: '' || window.sessionStorage.authToken,
         events: [],
         updateUser: (user) => {
+            console.log(user)
             this.setState({
                 user_id: user.user_id,
                 birthyear: user.birthyear,

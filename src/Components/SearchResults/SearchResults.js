@@ -1,62 +1,48 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import EventsService from '../../Services/events-service';
+import React, {Component} from 'react';
 import editImg from '../../Images/edit.png';
+import { Link } from 'react-router-dom';
+import UserContext from '../../Context/user-context';
 import {Image/*, Transformation, CloudinaryContext*/} from 'cloudinary-react';
-import './YearViewPage.css';
 
-export default class YearView extends Component{
+export default class SearchResults extends Component{
+    static contextType = UserContext;
     static defaultProps ={
         match: { params: {}},
     };
-
     constructor(props){
         super(props)
         this.state ={
-            yearEvents : [],
-            edit: 'hiddenEdit',
-            date: '',
-            eventName: '',
-            category: '',
-            notes: '',
+            categoryFilteredEvents: [],
+            editSearched: 'hiddenEdit',
+            //date: '',
+            //eventName: '',
+            //category: '',
+            //notes: '',
         }
     }
-// this part will change when data come back in 2020-02 format
-    showEditFeature(event){
-        if(this.state.edit === 'hiddenEdit'){
-            this.setState({
-                edit: 'showEdit',
-                date: event.eventdate,
-                eventName: event.eventname,
-                category: event.category,
-                notes: event.notes,
-            })
-        } 
-    }
 
-    submitChangeEvent=()=>{
-        console.log('submitted')
+    filterCategoryEvents() {
+        let fEvents =[]
+        this.context.events.map(i => {
+            if(i.category === this.props.match.params.Category){
+                fEvents = fEvents.concat(i)
+            }
+        })
         this.setState({
-           edit: 'hiddenEdit'
+            categoryFilteredEvents: fEvents
         })
     }
 
-    componentDidMount(){
-        const year = this.props.match.params.year
-        EventsService.getYearEvents(year)
-        .then(filteredYearEvents => {
-            this.setState({
-                yearEvents: filteredYearEvents.rows
-            })
-        })  
+    componentDidMount() {
+        this.filterCategoryEvents()
     }
-
     render(){
+        const categName = this.props.match.params.Category
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
             <div>
-                <h3 className='yearheader'>{this.props.match.params.year}</h3>
-                <div  className={this.state.edit}>
+                <h3 className='yearheader'>{categName}</h3>
+                <div  className={this.state.editSearched}>
                     <form id='editpopup' className='edit-content' onSubmit={this.submitChangeEvent}>
                         <label>Date</label>
                         <input type='date' id='date' defaultValue={this.state.eventdate}/>
@@ -80,7 +66,7 @@ export default class YearView extends Component{
                         <input type='submit'/>
                     </form>
                 </div> 
-                {this.state.yearEvents.map(i => {
+                {this.state.categoryFilteredEvents.map(i => {
                     let date = new Date(i.eventdate)
                         return <div className='indivevent' id={i.eventid} key={i.eventid}>
                             <p className='eventInfo'>{date.toDateString()}<br/>{i.eventname}<br/> Notes: {i.notes}</p>

@@ -23,6 +23,7 @@ export default class Home extends Component {
         super(props)
         this.state ={
             key: 'hidden',
+            SearchCategory: 'Achievements',
         }
     }
     
@@ -58,19 +59,14 @@ export default class Home extends Component {
         }
     }
 
-    handleClick = (e) => {
-        var dropdown = document.getElementById('myModal')
-        if(e.target !== dropdown && e.target.parentNode !== dropdown){
-            e.preventDefault()
-            this.setState({
-                key: 'hidden'
-            })
-            return;
-        }
+    setCategory(e) {
+        console.log(e)
+        //this.setState({
+        //    SearchCategory: e
+        //})
     }
 
     componentDidMount() {
-        document.addEventListener('mousedown', this.handleClick)
         EventsService.getEvents()
     .then(events => this.context.updateEvents(events))
     }
@@ -84,18 +80,19 @@ export default class Home extends Component {
                     <Link to='/AddEvent' className='homeeventlink'>Add Event</Link>
                     <button onClick={() =>this.showImgKey()} className='homeeventbutton'>Symbol Key</button>
                 </div>
-                <form>
+                <form className='searchform'>
                     <fieldset>
-                        <label>Search: </label>
-                        <input type='text'></input>
-                        <select id='category'>
-                            <option  disabled hidden value='default'>Select</option>
-                            {categories.map(i => {
-                                return <option id='category' key={i} name='category' value={i}>{i}</option>
-                            })}
-                        </select>
+                    <label>Search: </label>
+                    <select id='category'  onChange={(e) => {this.setCategory(e)}}>
+                        <option hidden defaultValue name='category'>Select</option>
+                        {categories.map(i => {
+                            return <option key={i} name='category' value={i}>{i}</option>
+                        })}
+                    </select>
+                    <Link to={`/Search/${this.state.SearchCategory}`}>Go</Link>
                     </fieldset>
                 </form>
+                
                 <div id='myModal' className={this.state.key}>
                     <div className='modal-content'>
                         <p><img src={achievImg} alt='Achievements'/> Achievements</p>

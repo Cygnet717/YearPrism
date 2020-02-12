@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserApiService from '../../Services/user-api-service';
 import UserContext from '../../Context/user-context';
+import TokenService from '../../Services/token-service';
 import './RegisterPage.css';
 
 export default class CreateAccount extends Component {
@@ -14,20 +15,27 @@ export default class CreateAccount extends Component {
 
     handleSubmitNewUser = ev => {
         ev.preventDefault()
-        this.props.complete()
+        this.setState({ error: null})
         const { username, birthyear, password} = ev.target
+        
         UserApiService.postUser({
             username: username.value,
             birthyear: birthyear.value,
             password: password.value,
         })
         .then(res => {
+            console.log(res)
             username.value = ''
-            this.context.updateUser(res)
+            this.context.updateUser(res.user)
+            TokenService.saveAuthToken(res.authToken, res.user.user_id)
+            if(this.state.error === null){
+                this.props.complete()
+            }
         })
         .catch(res => {
-        this.setState({ error: res.error })
+            this.setState({ error: res.error })
         })
+        
     }
 
 

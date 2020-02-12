@@ -46,6 +46,7 @@ export default class Header extends Component {
     }
 
     RenderBurgerMenu(){
+        console.log('show burger menu')
         if(this.state.burger === 'burgerhidden'){
             this.setState({
                 burger: 'burgermenu'

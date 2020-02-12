@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import UserApiService from '../../Services/user-api-service';
 import TokenService from '../../Services/token-service';
 import UserContext from '../../Context/user-context';
-import EventsService from '../../Services/events-service';
 import './LoginPage.css';
 
 export default class LoginPage extends Component {
@@ -63,6 +62,9 @@ export default class LoginPage extends Component {
                         <input type='submit' value='Login'></input>
                     </fieldset>
                 </form>
+                <div role='alert'>
+                    {this.state.error && <p className='red'>{this.state.error}</p>}
+                </div>
             </div>
         )
     }
