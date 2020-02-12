@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import EventsService from '../../Services/events-service';
 import editImg from '../../Images/edit.png';
+import deleteImg from '../../Images/delete.png';
 import {Image/*, Transformation, CloudinaryContext*/} from 'cloudinary-react';
 import './YearViewPage.css';
 
@@ -40,7 +41,19 @@ export default class YearView extends Component{
            edit: 'hiddenEdit'
         })
     }
-    
+
+    deleteEventClick(event){
+        console.log(event.eventid)
+        if (window.confirm(`Are you sure you want to delete this event? ${event.eventname}`)){
+            console.log('deleted')
+            EventsService.deleteEvent(event.eventid)
+            let lessEvents = this.state.yearEvents.filter(i => i.eventid !== event.eventid)
+            this.setState({ yearEvents: lessEvents })
+        } else {
+            console.log('not deleted')
+        }
+    }
+
     componentDidMount(){
         const year = this.props.match.params.year
         EventsService.getYearEvents(year)
@@ -88,7 +101,10 @@ export default class YearView extends Component{
                             <div className='imagebox'>
                                 <Image className='eventImage' cloudName="dingowidget" publicId={i.eventImage} width="100" crop="scale" />
                             </div>
-                            <img className='editIcon' src={editImg} alt='edit' onClick={() => this.showEditFeature(i)}/>
+                            <div className='eventbuttons'>
+                                <img className='editIcon' src={editImg} alt='edit' onClick={() => this.showEditFeature(i)}/>
+                                <img className='editIcon' src ={deleteImg} alt='delete' onClick={() => this.deleteEventClick(i)}/>
+                            </div>
                         </div>
                 })}
                 <div className='linkDiv'>

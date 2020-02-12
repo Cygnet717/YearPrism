@@ -70,7 +70,7 @@ const EventsApiService = {
 
 
 
-  deleteEvent(eventId) {
+  deleteEvent(eventid) {
     return fetch(`${config.API_YearPrism}/events`, {
       method: 'DELETE',
       headers: {
@@ -78,7 +78,7 @@ const EventsApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        eventId
+        eventid
       }),
     })
       .then(res =>

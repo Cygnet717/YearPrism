@@ -17,6 +17,12 @@
     margin-left: auto;
 }
 
+.eventbuttons{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .addeventlink{
     background-color: #F0D200;
     text-decoration: none;

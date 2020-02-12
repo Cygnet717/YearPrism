@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import editImg from '../../Images/edit.png';
+import deleteImg from '../../Images/delete.png';
 import { Link } from 'react-router-dom';
 import UserContext from '../../Context/user-context';
+import EventsService from '../../Services/events-service';
 import {Image/*, Transformation, CloudinaryContext*/} from 'cloudinary-react';
 
 export default class SearchResults extends Component{
@@ -32,6 +34,18 @@ export default class SearchResults extends Component{
         this.setState({
             categoryFilteredEvents: sorted
         })
+    }
+
+    deleteEventClick(event){
+        console.log(event.eventid)
+        if (window.confirm(`Are you sure you want to delete this event? ${event.eventname}`)){
+            console.log('deleted')
+            EventsService.deleteEvent(event.eventid)
+            let lessEvents = this.state.categoryFilteredEvents.filter(i => i.eventid !== event.eventid)
+            this.setState({ categoryFilteredEvents: lessEvents })
+        } else {
+            console.log('not deleted')
+        }
     }
 
     componentDidMount() {
@@ -74,7 +88,10 @@ export default class SearchResults extends Component{
                             <div className='imagebox'>
                                 <Image className='eventImage' cloudName="dingowidget" publicId={i.eventImage} width="100" crop="scale" />
                             </div>
-                            <img className='editIcon' src={editImg} alt='edit' onClick={() => this.showEditFeature(i)}/>
+                            <div className='eventbuttons'>
+                                <img className='editIcon' src={editImg} alt='edit' onClick={() => this.showEditFeature(i)}/>
+                                <img className='editIcon' src ={deleteImg} alt='delete' onClick={() => this.deleteEventClick(i)}/>
+                            </div>
                         </div>
                 })}
                 <div className='linkDiv'>
