@@ -21,7 +21,7 @@ export default class YearView extends Component{
             notes: '',
         }
     }
-// this part will change when data come back in 2020-02 format
+
     showEditFeature(event){
         if(this.state.edit === 'hiddenEdit'){
             this.setState({
@@ -41,12 +41,20 @@ export default class YearView extends Component{
         })
     }
 
+    sortEvents(list){
+        console.log(list)
+        let done = 
+        console.log(done)
+        return done
+    }
+
     componentDidMount(){
         const year = this.props.match.params.year
         EventsService.getYearEvents(year)
         .then(filteredYearEvents => {
+            let sorted = filteredYearEvents.rows.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
             this.setState({
-                yearEvents: filteredYearEvents.rows
+                yearEvents: sorted
             })
         })  
     }
