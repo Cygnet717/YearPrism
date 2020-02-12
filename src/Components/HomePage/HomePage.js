@@ -23,7 +23,7 @@ export default class Home extends Component {
         super(props)
         this.state ={
             key: 'hidden',
-            SearchCategory: 'Achievements',
+            SearchCategory: '',
         }
     }
     
@@ -60,10 +60,9 @@ export default class Home extends Component {
     }
 
     setCategory(e) {
-        console.log(e)
-        //this.setState({
-        //    SearchCategory: e
-        //})
+        this.setState({
+            SearchCategory: e.target.value
+        })
     }
 
     componentDidMount() {
