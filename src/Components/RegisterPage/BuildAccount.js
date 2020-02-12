@@ -78,18 +78,20 @@ export default class BuildAccount extends Component {
         return(
             <>
             <button onClick={() => this.ShowHideSugg()}>Suggestions</button>
-            <div id='suggestionsdropdown' className={this.state.suggestions}>
-                <ul className='sugg-content'>
-                    <li className='sugg'><u>Achievements</u>: ran a 5K, paied off debt, bought a house, 1 year sober, ect.</li>
-                    <li className='sugg'><u>Body Modifications</u>: Laser eye surgery, tattoo, piercing, ect.</li>
-                    <li className='sugg'><u>Family</u>: Birth, death, adoption, marrage, divorce, ect.</li>
-                    <li className='sugg'><u>Home</u>: Moving, replaced furnace, build a deck, painted a room, ect.</li>
-                    <li className='sugg'><u>Job</u>: Start a new job, promotion, new title, leave job, ect.</li>
-                    <li className='sugg'><u>Medical</u>: Teeth cleaning, tetanus shot, surgery, ect.</li>
-                    <li className='sugg'><u>Pets</u>: Adopted/bought new pet, medical procedures, death, ect.</li>
-                    <li className='sugg'><u>Relationship</u>: Start a new relationship, wedding, major milestone, end relationship, ect.</li>
-                    <li className='sugg'><u>School</u>: Start a new school, graduation, ect.</li>
-                </ul>
+            <div className={`falsesugg ${this.state.suggestions}`} onClick={() => this.ShowHideSugg()}>
+                <div id='suggestionsdropdown' className={`truesugg ${this.state.suggestions}`}>
+                    <ul className='sugg-content'>
+                        <li className='sugg'><u>Achievements</u>: ran a 5K, paied off debt, bought a house, 1 year sober, ect.</li>
+                        <li className='sugg'><u>Body Modifications</u>: Laser eye surgery, tattoo, piercing, ect.</li>
+                        <li className='sugg'><u>Family</u>: Birth, death, adoption, marrage, divorce, ect.</li>
+                        <li className='sugg'><u>Home</u>: Moving, replaced furnace, build a deck, painted a room, ect.</li>
+                        <li className='sugg'><u>Job</u>: Start a new job, promotion, new title, leave job, ect.</li>
+                        <li className='sugg'><u>Medical</u>: Teeth cleaning, tetanus shot, surgery, ect.</li>
+                        <li className='sugg'><u>Pets</u>: Adopted/bought new pet, medical procedures, death, ect.</li>
+                        <li className='sugg'><u>Relationship</u>: Start a new relationship, wedding, major milestone, end relationship, ect.</li>
+                        <li className='sugg'><u>School</u>: Start a new school, graduation, ect.</li>
+                    </ul>
+                </div>
             </div>
             <form className='builder'>
             <fieldset>

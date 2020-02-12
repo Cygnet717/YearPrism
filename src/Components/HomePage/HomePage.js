@@ -91,20 +91,21 @@ export default class Home extends Component {
                     <Link to={`/Search/${this.state.SearchCategory}`}>Go</Link>
                     </fieldset>
                 </form>
-                
-                <div id='myModal' className={this.state.key}>
-                    <div className='modal-content'>
-                        <p><img src={achievImg} alt='Achievements'/> Achievements</p>
-                        <p><img src={modImg} alt='BodyModification'/> Body Modification</p>
-                        <p><img src={familyImg} alt='Family'/> Family</p>
-                        <p><img src={homeImg} alt='Home'/> Home</p>
-                        <p><img src={jobImg} alt='Job'/> Job</p>
-                        <p><img src={medImg} alt='Medical'/> Medical</p>
-                        <p><img src={petsImg} alt='Pets'/> Pets</p>
-                        <p><img src={relationImg} alt='Relationship'/> Relationship</p>
-                        <p><img src={schoolImg} alt='School'/> School</p>
-                        <p><img src={vacaImg} alt='Vacation'/> Vacation</p>
-                        <p><img src={otherImg} alt='Other'/>Other</p>
+                <div className={`falsemodal ${this.state.key}`} onClick={() =>this.showImgKey()}>
+                    <div id='myModal' className={`truemodal ${this.state.key}`}>
+                        <div className='modal-content'>
+                            <p><img src={achievImg} alt='Achievements'/> Achievements</p>
+                            <p><img src={modImg} alt='BodyModification'/> Body Modification</p>
+                            <p><img src={familyImg} alt='Family'/> Family</p>
+                            <p><img src={homeImg} alt='Home'/> Home</p>
+                            <p><img src={jobImg} alt='Job'/> Job</p>
+                            <p><img src={medImg} alt='Medical'/> Medical</p>
+                            <p><img src={petsImg} alt='Pets'/> Pets</p>
+                            <p><img src={relationImg} alt='Relationship'/> Relationship</p>
+                            <p><img src={schoolImg} alt='School'/> School</p>
+                            <p><img src={vacaImg} alt='Vacation'/> Vacation</p>
+                            <p><img src={otherImg} alt='Other'/>Other</p>
+                        </div>
                     </div>
                 </div>
                 <div className='yearlist'>

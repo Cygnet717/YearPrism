@@ -30,12 +30,14 @@ export default class Header extends Component {
                     src={hamburger} alt='Hamburger Menu' 
                     onClick={()=>{this.RenderBurgerMenu()}}>
                 </img>  
-                <nav id='burgerdropdown' className={this.state.burger}> 
-                    <Link to='/Home' onClick={()=>{this.RenderBurgerMenu()}}>Home</Link>
-                    <Link to='/AddEvent' onClick={()=>{this.RenderBurgerMenu()}}>Add Event</Link>
-                    <Link to='/' onClick={() => {this.logoutClick()}}>LogOut</Link>
-                    <Link to='/DeleteAccount' onClick={()=>{this.RenderBurgerMenu()}}>Delete Account</Link>
-                </nav>
+                <div className={`falseburger ${this.state.burger}`} onClick={()=>this.RenderBurgerMenu()}>
+                    <nav id='burgerdropdown' className={`realburger ${this.state.burger}`}> 
+                        <Link to='/Home' onClick={()=>{this.RenderBurgerMenu()}}>Home</Link>
+                        <Link to='/AddEvent' onClick={()=>{this.RenderBurgerMenu()}}>Add Event</Link>
+                        <Link to='/' onClick={() => {this.logoutClick()}}>LogOut</Link>
+                        <Link to='/DeleteAccount' onClick={()=>{this.RenderBurgerMenu()}}>Delete Account</Link>
+                    </nav>
+                </div>
             </div>
         )
     }
@@ -46,7 +48,6 @@ export default class Header extends Component {
     }
 
     RenderBurgerMenu(){
-        console.log('show burger menu')
         if(this.state.burger === 'burgerhidden'){
             this.setState({
                 burger: 'burgermenu'
@@ -55,8 +56,7 @@ export default class Header extends Component {
             this.setState({
                 burger:'burgerhidden'
             })
-        }
-        
+        }   
     }
     
     render(){

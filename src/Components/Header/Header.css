@@ -32,6 +32,7 @@
     text-decoration: none;
 }
 .hamburger{
+    z-index: 8;
     margin-right: 20px;
     height: 40px;
     cursor: pointer;
@@ -42,11 +43,7 @@
 }
 
 .burgermenu{
-    position: fixed;
-    right: 0;
-    background-color: rgb(138, 86, 211);
     display: flex;
-    flex-direction: column;
 }
 
 .burgermenu > a {
@@ -59,4 +56,22 @@
     padding-bottom: 5px;
     text-decoration: none;
     color: #F0D200;
+}
+
+.realburger{
+    position: fixed;
+    right: 0;
+    top: 60px;
+    background-color: rgb(138, 86, 211);
+    flex-direction: column;
+    z-index: 8;
+}
+
+.falseburger{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
 }
