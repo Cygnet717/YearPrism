@@ -14,10 +14,10 @@ export default class SearchResults extends Component{
         this.state ={
             categoryFilteredEvents: [],
             editSearched: 'hiddenEdit',
-            //date: '',
-            //eventName: '',
-            //category: '',
-            //notes: '',
+            date: '',
+            eventName: '',
+            category: '',
+            notes: '',
         }
     }
 
@@ -28,8 +28,9 @@ export default class SearchResults extends Component{
                 fEvents = fEvents.concat(i)
             }
         })
+        let sorted = fEvents.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
         this.setState({
-            categoryFilteredEvents: fEvents
+            categoryFilteredEvents: sorted
         })
     }
 

@@ -40,14 +40,7 @@ export default class YearView extends Component{
            edit: 'hiddenEdit'
         })
     }
-
-    sortEvents(list){
-        console.log(list)
-        let done = 
-        console.log(done)
-        return done
-    }
-
+    
     componentDidMount(){
         const year = this.props.match.params.year
         EventsService.getYearEvents(year)
