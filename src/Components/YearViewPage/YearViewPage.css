@@ -8,6 +8,7 @@
 
 .yearheader {
     text-align: center;
+    width: fit-content;
 }
 
 .linkDiv{
@@ -15,6 +16,29 @@
     margin-top: 20px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.yearnav{
+    display: flex;
+    justify-content: space-around;
+}
+
+.homenavlink{
+    text-decoration: none;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px;
+    background-color: #F0D200;
+    border: 1px solid black;
+    display: block;
+}
+
+.yearnavlink{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    
 }
 
 .eventbuttons{

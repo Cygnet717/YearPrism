@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import EventsService from '../../Services/events-service';
 import editImg from '../../Images/edit.png';
 import deleteImg from '../../Images/delete.png';
+import nextImg from '../../Images/next.png';
+import backImg from '../../Images/back.png';
 import {Image/*, Transformation, CloudinaryContext*/} from 'cloudinary-react';
 import './YearViewPage.css';
 
@@ -54,6 +56,16 @@ export default class YearView extends Component{
         }
     }
 
+    updatePage(year){
+        EventsService.getYearEvents(year)
+        .then(filteredYearEvents => {
+            let sorted = filteredYearEvents.rows.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
+            this.setState({
+                yearEvents: sorted
+            })
+        })  
+    }
+
     componentDidMount(){
         const year = this.props.match.params.year
         EventsService.getYearEvents(year)
@@ -66,10 +78,23 @@ export default class YearView extends Component{
     }
 
     render(){
+        const currYear = this.props.match.params.year
+        let plusOne = parseInt(currYear)+1
+        let minusOne = parseInt(currYear)-1
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
             <div>
-                <h3 className='yearheader'>{this.props.match.params.year}</h3>
+                <Link to={'/Home'} className='homenavlink'>Home</Link>
+                <div className='yearnav'>
+                    <Link to={`/Year/${minusOne}`} key={minusOne} onClick={() => {this.updatePage(minusOne)}} className='yearnavlink' >
+                        <img src={backImg} alt='back'/>{minusOne}
+                        </Link>
+                    <h3 className='yearheader'>{this.props.match.params.year}</h3>
+                    <Link to={`/Year/${plusOne}`} key={plusOne} onClick={() => {this.updatePage(plusOne)}} className='yearnavlink' >
+                        {plusOne}<img src={nextImg} alt='next'/>
+                        </Link>
+                </div>
+                
                 <div  className={this.state.edit}>
                     <form id='editpopup' className='edit-content' onSubmit={this.submitChangeEvent}>
                         <label>Date</label>
