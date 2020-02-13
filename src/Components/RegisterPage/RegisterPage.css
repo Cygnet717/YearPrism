@@ -49,3 +49,10 @@
     padding-bottom: 8px;
     border-bottom: 1px solid #F0D200;
   }
+
+#thinking{
+  height: 60px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

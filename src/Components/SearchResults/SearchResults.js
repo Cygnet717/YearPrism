@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import UserContext from '../../Context/user-context';
 import EventsService from '../../Services/events-service';
 import {Image/*, Transformation, CloudinaryContext*/} from 'cloudinary-react';
+import './SearchResults.css'
 
 export default class SearchResults extends Component{
     static contextType = UserContext;
@@ -107,7 +108,8 @@ cancelEdit(){
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
             <div>
-                <h3 className='yearheader'>{categName}</h3>
+                <Link to={'/Home'} className='homenavlink'>Home</Link>
+                <h3 className='categheader'>{categName}</h3>
                 <div  className={this.state.editSearched}>
                     <form id='editpopup' className='edit-content' onSubmit={(e) => this.submitChangeEvent(e)}>
                         <label>Date</label>

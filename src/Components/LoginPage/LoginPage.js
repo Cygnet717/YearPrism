@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UserApiService from '../../Services/user-api-service';
 import TokenService from '../../Services/token-service';
 import UserContext from '../../Context/user-context';
+import thinking from '../../Images/spinner.gif';
 import './LoginPage.css';
 
 export default class LoginPage extends Component {
@@ -10,6 +11,7 @@ export default class LoginPage extends Component {
     super(props)
     this.state = { 
       error: null, 
+      thinking: false,
     }
   }
 
@@ -30,6 +32,7 @@ export default class LoginPage extends Component {
     ev.preventDefault()
     this.setState({ 
       error: null,
+      thinking: true,
     })
     const { username, password} = ev.target
     UserApiService.postLogin({
@@ -45,7 +48,10 @@ export default class LoginPage extends Component {
         this.handleLoginSuccess(res.user.user_id)
     })
     .catch(res => {
-      this.setState({ error: res.error })
+      this.setState({ 
+        error: res.error,
+        thinking: false,
+       })
       })
   }
 
@@ -62,6 +68,7 @@ export default class LoginPage extends Component {
                         <input type='submit' value='Login'></input>
                     </fieldset>
                 </form>
+                {this.state.thinking && this.state.error === null? <img id='thinking' src={thinking} alt='loading...'/>: <span></span>}
                 <div role='alert'>
                     {this.state.error && <p className='red'>{this.state.error}</p>}
                 </div>

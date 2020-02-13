@@ -2,3 +2,10 @@
     text-align: center;
     
 }
+
+#thinking{
+    height: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
