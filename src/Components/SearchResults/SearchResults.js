@@ -16,11 +16,26 @@ export default class SearchResults extends Component{
         this.state ={
             categoryFilteredEvents: [],
             editSearched: 'hiddenEdit',
-            date: '',
-            eventName: '',
             category: '',
-            notes: '',
+            eventname: '',
+            eventdate: '',
+            eventid: '',
+            notes: ''
         }
+    }
+
+    showEditFeature(event){
+        let editDate = event.eventdate.slice(0, 10)
+        if(this.state.editSearched === 'hiddenEdit'){
+            this.setState({
+                editSearched: 'showEdit',
+                eventid: event.eventid,
+                eventdate: editDate,
+                eventname: event.eventname,
+                category: event.category,
+                notes: event.notes,
+            })
+        } 
     }
 
     filterCategoryEvents() {
@@ -33,6 +48,42 @@ export default class SearchResults extends Component{
         let sorted = fEvents.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
         this.setState({
             categoryFilteredEvents: sorted
+        })
+    }
+
+    submitChangeEvent=(e)=>{
+        e.preventDefault()
+        const data = new FormData(e.target)
+        const DateFormated = new Date(data.get('date'))
+        let EditedEvent = {
+            eventid: this.state.eventid,
+            eventdate: DateFormated,
+            eventname: data.get('eventname'),
+            category: data.get('category'),
+            notes: data.get('notes')
+        }
+        EventsService.EditEvent(EditedEvent)
+        .then(res => {
+            const changedIndex = this.state.categoryFilteredEvents.findIndex(i => i.eventid === res[0].eventid)
+            let thing = this.state.categoryFilteredEvents
+            thing[changedIndex] = res[0];
+            thing = thing.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
+            this.setState({
+                categoryFilteredEvents: thing,
+            })
+    })
+        this.cancelEdit()
+    }
+
+
+cancelEdit(){
+        this.setState({
+            editSearched: 'hiddenEdit',
+            category: '',
+            eventname: '',
+            eventdate: '',
+            eventid: '',
+            notes: ''
         })
     }
 
@@ -58,15 +109,15 @@ export default class SearchResults extends Component{
             <div>
                 <h3 className='yearheader'>{categName}</h3>
                 <div  className={this.state.editSearched}>
-                    <form id='editpopup' className='edit-content' onSubmit={this.submitChangeEvent}>
+                    <form id='editpopup' className='edit-content' onSubmit={(e) => this.submitChangeEvent(e)}>
                         <label>Date</label>
-                        <input type='date' id='date' defaultValue={this.state.eventdate}/>
+                        <input type='date' id='date' name='date' defaultValue={this.state.eventdate}/>
                         <br/>
                         <label>Event name</label>
-                        <input type='text' id='eName' defaultValue={this.state.eventname} size="28"/>
+                        <input type='text' id='eventname' name='eventname' defaultValue={this.state.eventname} size="28"/>
                         <br/>
                         <label>Category</label>
-                        <select id='category' >
+                        <select id='category' name='category'>
                             {categories.map(i => {
                                 if(i === this.state.category){
                                     return <option selected id='category' key={i} name='category' value={i}>{i}</option>
@@ -76,9 +127,9 @@ export default class SearchResults extends Component{
                         </select>
                         <br/>
                         <label>Notes</label>
-                        <input id='notes' type='textbox' size='44' defaultValue={this.state.notes}/>
+                        <input id='notes' name='notes' type='textbox' size='44' defaultValue={this.state.notes}/>
                         <br/>
-                        <input type='submit'/>
+                        <input type='submit'/><button type='button' onClick={() =>this.cancelEdit()}>Cancel</button>
                     </form>
                 </div> 
                 {this.state.categoryFilteredEvents.map(i => {

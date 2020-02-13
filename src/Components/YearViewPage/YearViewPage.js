@@ -20,7 +20,7 @@ export default class YearView extends Component{
             edit: 'hiddenEdit',
             eventid: '',
             date: '',
-            eventName: '',
+            eventname: '',
             category: '',
             notes: '',
         }
@@ -42,25 +42,37 @@ export default class YearView extends Component{
 
     cancelEdit(){
         this.setState({
-            edit: 'hiddenEdit'
+            edit: 'hiddenEdit',
+           category: '',
+           eventname: '',
+           eventdate: '',
+           eventid: '',
+           notes: ''
         })
     }
 
     submitChangeEvent=(e)=>{
         e.preventDefault()
         const data = new FormData(e.target)
+        const DateFormated = new Date(data.get('date'))
         let EditedEvent = {
             eventid: this.state.eventid,
-            eventdate: data.get('date'),
+            eventdate: DateFormated,
             eventname: data.get('eventname'),
             category: data.get('category'),
             notes: data.get('notes')
         }
         EventsService.EditEvent(EditedEvent)
-        .then(res => console.log(res))
-        this.setState({
-           edit: 'hiddenEdit'
-        })
+        .then(res => {
+            const changedIndex = this.state.yearEvents.findIndex(i => i.eventid === res[0].eventid)
+            let thing = this.state.yearEvents
+            thing[changedIndex] = res[0];
+            thing = thing.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
+            this.setState({
+                yearEvents: thing,
+            })
+    })
+        this.cancelEdit()
     }
 
     deleteEventClick(event){
@@ -115,7 +127,7 @@ export default class YearView extends Component{
                 </div>
                 
                 <div  className={this.state.edit}>
-                    <form id='editpopup' className='edit-content' onSubmit={this.submitChangeEvent}>
+                    <form id='editpopup' className='edit-content' onSubmit={(e) => this.submitChangeEvent(e)}>
                         <label>Date</label>
                         <input type='date' name='date' id='date' defaultValue={this.state.eventdate}/>
                         <br/>
