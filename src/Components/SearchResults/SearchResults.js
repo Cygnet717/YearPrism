@@ -107,7 +107,7 @@ cancelEdit(){
         const categName = this.props.match.params.Category
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
-            <div>
+            <div className='maindiv'>
                 <Link to={'/Home'} className='homenavlink'>Home</Link>
                 <h3 className='categheader'>{categName}</h3>
                 <div  className={this.state.editSearched}>

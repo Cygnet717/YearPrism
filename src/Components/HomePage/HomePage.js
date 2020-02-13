@@ -74,7 +74,7 @@ export default class Home extends Component {
         
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
-            <div>
+            <div className='mainHomeDiv'>
                 <div className='homenav'>
                     <Link to='/AddEvent' className='homeeventlink'>Add Event</Link>
                     <button onClick={() =>this.showImgKey()} className='homeeventbutton'>Symbol Key</button>

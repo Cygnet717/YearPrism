@@ -17,7 +17,7 @@ export default class RegisterPage extends Component {
     }
     render() {
         return(
-            <div>
+            <div className='maindiv'>
                 {this.state.step === 1 ? <CreateAccount complete={() => this.StepTwo()}/>: <BuildAccount/>}
                
             </div>

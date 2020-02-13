@@ -89,7 +89,7 @@ export default class BuildAccount extends Component {
       return <p key={i.eventname}>{i.eventdate}, {i.eventname}, {i.category}, {i.notes}</p>
     })
     return(
-      <>
+      <div className='mainBuildDiv'>
         <button onClick={() => this.ShowHideSugg()}>Suggestions</button>
           <div className={`falsesugg ${this.state.suggestions}`} onClick={() => this.ShowHideSugg()}>
             <div id='suggestionsdropdown' className={`truesugg ${this.state.suggestions}`}>
@@ -119,7 +119,7 @@ export default class BuildAccount extends Component {
           {this.state.thinking? this.renderThinking(): <span></span>}
           {this.state.newEvents.length === 0 ? <></> : ListEvents}
           <Link to={'/Home'} onClick={() => this.submitNewEvents()}>Done</Link>
-      </>
+      </div>
     )
   }
 }

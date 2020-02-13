@@ -114,7 +114,7 @@ export default class YearView extends Component{
         let minusOne = parseInt(currYear)-1
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
-            <div>
+            <div className='mainYearViewDiv'>
                 <Link to={'/Home'} className='homenavlink'>Home</Link>
                 <div className='yearnav'>
                     <Link to={`/Year/${minusOne}`} key={minusOne} onClick={() => {this.updatePage(minusOne)}} className='yearnavlink' >

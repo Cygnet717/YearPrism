@@ -16,7 +16,7 @@ export default class DeleteAccount extends Component {
 
     render(){
         return(
-            <div>
+            <div className='maindiv'>
                 <p className='deletequestion'>Are you sure you want to delete your account?</p>
                 <div className='buttonbox'>
                     <Link to={'/'} className='deletebutton' onClick={() =>{this.executeDeleteAccount(this.context.user_id)}}>Yes!</Link>

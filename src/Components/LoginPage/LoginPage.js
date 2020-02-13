@@ -57,7 +57,7 @@ export default class LoginPage extends Component {
 
     render() {
         return(
-            <div>
+            <div className='maindiv'>
                 <form className='loginform form' onSubmit={this.handleSubmitLogin}>
                     <fieldset> 
                         <legend>LogIn</legend>

@@ -3,8 +3,8 @@
 }
 
 .mainNav{
-    border:2px solid #FAF2B5;
-    background-color: #F0D200;
+    
+    background-image: linear-gradient(to bottom right, #C3D1E0, #0A3545);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,17 +18,21 @@
 
 .headerLink{
     text-decoration: none;
-    color:  rgb(138, 86, 211);
+    color:  #C3D1E0;
     padding: 5px;
     margin-left: 20px;
+    background: #37647B;
+    height: fit-content;
+    border: 2px solid #C3D1E0;
+    border-radius: 15px;
 }
 
 .button{
-    border: 1px solid #e2b2ff;
-    background-color: rgb(138, 86, 211);
+    border: 1px solid #C3D1E0;
+    background-color: #37647B;
     padding: 3px;
     cursor: pointer;
-    color: #F0D200;
+    color: #C3D1E0;
     text-decoration: none;
 }
 .hamburger{
@@ -47,7 +51,7 @@
 }
 
 .burgermenu > a {
-    border-bottom: 1px solid #F0D200;
+    border-bottom: 1px solid#29af7f;
     width: 100%;
     text-align: center;
     padding-left: 10px;
@@ -55,14 +59,14 @@
     padding-top: 5px;
     padding-bottom: 5px;
     text-decoration: none;
-    color: #F0D200;
+    color: #29af7f;
 }
 
 .realburger{
     position: fixed;
     right: 0;
     top: 60px;
-    background-color: rgb(138, 86, 211);
+    background-color: #482173;
     flex-direction: column;
     z-index: 8;
 }
