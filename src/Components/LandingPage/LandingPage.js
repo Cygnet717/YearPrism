@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './LandingPage.css'
+import Footer from '../Footer/Footer';
+import './LandingPage.css';
 
 export default class LandingPage extends Component{
     render(){
@@ -19,6 +20,7 @@ export default class LandingPage extends Component{
                     UserName: <br/>
                     Password:
                 </p>
+                <Footer />
             </div>
         )
     }

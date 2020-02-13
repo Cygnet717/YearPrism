@@ -18,6 +18,7 @@ export default class YearView extends Component{
         this.state ={
             yearEvents : [],
             edit: 'hiddenEdit',
+            eventid: '',
             date: '',
             eventName: '',
             category: '',
@@ -26,19 +27,37 @@ export default class YearView extends Component{
     }
 
     showEditFeature(event){
+        let editDate = event.eventdate.slice(0, 10)
         if(this.state.edit === 'hiddenEdit'){
             this.setState({
                 edit: 'showEdit',
-                date: event.eventdate,
-                eventName: event.eventname,
+                eventid: event.eventid,
+                eventdate: editDate,
+                eventname: event.eventname,
                 category: event.category,
                 notes: event.notes,
             })
         } 
     }
 
-    submitChangeEvent=()=>{
-        console.log('submitted')
+    cancelEdit(){
+        this.setState({
+            edit: 'hiddenEdit'
+        })
+    }
+
+    submitChangeEvent=(e)=>{
+        e.preventDefault()
+        const data = new FormData(e.target)
+        let EditedEvent = {
+            eventid: this.state.eventid,
+            eventdate: data.get('date'),
+            eventname: data.get('eventname'),
+            category: data.get('category'),
+            notes: data.get('notes')
+        }
+        EventsService.EditEvent(EditedEvent)
+        .then(res => console.log(res))
         this.setState({
            edit: 'hiddenEdit'
         })
@@ -98,13 +117,13 @@ export default class YearView extends Component{
                 <div  className={this.state.edit}>
                     <form id='editpopup' className='edit-content' onSubmit={this.submitChangeEvent}>
                         <label>Date</label>
-                        <input type='date' id='date' defaultValue={this.state.eventdate}/>
+                        <input type='date' name='date' id='date' defaultValue={this.state.eventdate}/>
                         <br/>
                         <label>Event name</label>
-                        <input type='text' id='eName' defaultValue={this.state.eventname} size="28"/>
+                        <input type='text' name='eventname' id='eventname' defaultValue={this.state.eventname} size="28"/>
                         <br/>
                         <label>Category</label>
-                        <select id='category' >
+                        <select id='category' name='category'>
                             {categories.map(i => {
                                 if(i === this.state.category){
                                     return <option selected id='category' key={i} name='category' value={i}>{i}</option>
@@ -114,14 +133,15 @@ export default class YearView extends Component{
                         </select>
                         <br/>
                         <label>Notes</label>
-                        <input id='notes' type='textbox' size='44' defaultValue={this.state.notes}/>
+                        <input id='notes' name='notes' type='textbox' size='44' defaultValue={this.state.notes}/>
                         <br/>
-                        <input type='submit'/>
+                        <input type='submit'/><button type='button' onClick={() =>this.cancelEdit()}>Cancel</button>
                     </form>
                 </div> 
                 {this.state.yearEvents.map(i => {
                     let date = new Date(i.eventdate)
-                        return <div className='indivevent' id={i.eventid} key={i.eventid}>
+                        return (
+                        <div className='indivevent' id={i.eventid} key={i.eventid}>
                             <p className='eventInfo'>{date.toDateString()}<br/>{i.eventname}<br/> Notes: {i.notes}</p>
                             <div className='imagebox'>
                                 <Image className='eventImage' cloudName="dingowidget" publicId={i.eventImage} width="100" crop="scale" />
@@ -131,6 +151,7 @@ export default class YearView extends Component{
                                 <img className='editIcon' src ={deleteImg} alt='delete' onClick={() => this.deleteEventClick(i)}/>
                             </div>
                         </div>
+                        )
                 })}
                 <div className='linkDiv'>
                 <Link to={'/AddEvent'} className='addeventlink'>AddEvent</Link>

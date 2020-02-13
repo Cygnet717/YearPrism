@@ -49,17 +49,16 @@ const EventsApiService = {
       )
   },
 
-  EditEvent(id, EditedEvent){
+  EditEvent(EditedEvent){
     return fetch(`${config.API_YearPrism}/events`, {
         method: 'PATCH',
         headers: {
           'content-type': 'application/json',
           'authorization': `bearer ${TokenService.getAuthToken()}`
         },
-        body: JSON.stringify({
-          user_id: id,
-          ...EditedEvent
-        }),
+        body: JSON.stringify(
+          EditedEvent
+        ),
       })
         .then(res =>
           (!res.ok)
