@@ -12,7 +12,8 @@
 
 html {
     background-image: url('../../Images/beautiful-blur.jpg') ; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     height: 100%;
-    overflow: hidden;
 }

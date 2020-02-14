@@ -24,8 +24,8 @@ export default function Input(props) {
                 className="file-upload" data-cloudinary-field="image_id"
                 data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/>
             <br/>
-            <label>Notes </label>
-            <input id='notes' type='textbox' size='44'/>
+            <label>Notes </label><br/>
+            <textarea id='notes' name='notes' type='textbox' cols='40' rows='4'/>
         </div>
     )
 }

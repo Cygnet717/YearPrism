@@ -90,7 +90,7 @@ export default class BuildAccount extends Component {
     })
     return(
       <div className='mainBuildDiv'>
-        <button onClick={() => this.ShowHideSugg()}>Suggestions</button>
+        <button className='buildButton' onClick={() => this.ShowHideSugg()}>Suggestions</button>
           <div className={`falsesugg ${this.state.suggestions}`} onClick={() => this.ShowHideSugg()}>
             <div id='suggestionsdropdown' className={`truesugg ${this.state.suggestions}`}>
               <ul className='sugg-content'>
@@ -102,7 +102,7 @@ export default class BuildAccount extends Component {
                 <li className='sugg'><u>Medical</u>: Teeth cleaning, tetanus shot, surgery, ect.</li>
                 <li className='sugg'><u>Pets</u>: Adopted/bought new pet, medical procedures, death, ect.</li>
                 <li className='sugg'><u>Relationship</u>: Start a new relationship, wedding, major milestone, end relationship, ect.</li>
-                <li className='sugg'><u>School</u>: Start a new school, graduation, ect.</li>
+                <li className='sugglast'><u>School</u>: Start a new school, graduation, ect.</li>
               </ul>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default class BuildAccount extends Component {
             <fieldset>
               <legend>Input New Event</legend>
                 <Input />
-                <button onClick={(event) =>this.AddEvent(event)}>Add Event</button>
+                <button className='buildButton' onClick={(event) =>this.AddEvent(event)}>Add Event</button>
             </fieldset>
           </form>
           <div role='alert'>
@@ -118,7 +118,7 @@ export default class BuildAccount extends Component {
           </div>
           {this.state.thinking? this.renderThinking(): <span></span>}
           {this.state.newEvents.length === 0 ? <></> : ListEvents}
-          <Link to={'/Home'} onClick={() => this.submitNewEvents()}>Done</Link>
+          <Link className='buildButton link' to={'/Home'} onClick={() => this.submitNewEvents()}>Done</Link>
       </div>
     )
   }

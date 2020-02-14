@@ -10,6 +10,20 @@
   display: block;
 }
 
+.buildButton{
+    color: #C3D1E0;
+    border: 1px solid #C3D1E0;
+    background-color: #37647B;
+    padding: 5px;
+}
+
+.link{
+  text-decoration: none;
+  margin-top: 5px;
+  display: block;
+  width:fit-content;
+}
+
 .truesugg{
   position: fixed;
   z-index: 1;
@@ -18,8 +32,8 @@
 
   height: fit-content;
   overflow: auto; 
-  border: 1px solid #F0D200;
-  background-color: rgba(138, 86, 211, 0.959); 
+  border: 1px solid #C3D1E0;
+  background-color: #37647B; 
 }
 
 .falsesugg{
@@ -42,12 +56,16 @@
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
-    color: #F0D200;
+    color: #C3D1E0;
   }
+
+.sugglast {
+  padding-bottom: 8px;
+}
 
 .sugg {
     padding-bottom: 8px;
-    border-bottom: 1px solid #F0D200;
+    border-bottom: 1px solid #C3D1E0;
   }
 
 #thinking{
