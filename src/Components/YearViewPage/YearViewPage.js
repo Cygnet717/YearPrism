@@ -76,7 +76,6 @@ export default class YearView extends Component{
 
     deleteEventClick(event){
         if (window.confirm(`Are you sure you want to delete this event? ${event.eventname}`)){
-            console.log('deleted')
             EventsService.deleteEvent(event.eventid)
             let lessEvents = this.state.yearEvents.filter(i => i.eventid !== event.eventid)
             this.setState({ yearEvents: lessEvents })

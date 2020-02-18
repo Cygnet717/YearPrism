@@ -12,7 +12,6 @@ class UserProvider extends Component {
         authToken: '' || window.sessionStorage.authToken,
         events: [],
         updateUser: (user) => {
-            console.log(user)
             this.setState({
                 user_id: user.user_id,
                 birthyear: user.birthyear,

@@ -6,7 +6,7 @@ import thinking from '../../Images/spinner.gif';
 import './LoginPage.css';
 
 export default class LoginPage extends Component {
-    static contextType = UserContext;
+  static contextType = UserContext;
   constructor(props){
     super(props)
     this.state = { 
@@ -40,7 +40,6 @@ export default class LoginPage extends Component {
       password: password.value,
     })
     .then(res => {
-        console.log(res)
         username.value = ''
         password.value = ''
         this.context.updateUser(res.user)
@@ -52,27 +51,27 @@ export default class LoginPage extends Component {
         error: res.error,
         thinking: false,
        })
-      })
+    })
   }
 
-    render() {
-        return(
-            <div className='maindiv'>
-                <form className='loginform form' onSubmit={this.handleSubmitLogin}>
-                    <fieldset> 
-                        <legend>LogIn</legend>
-                        User Name <input required type= 'text' name='username'/>
-                        <br/>
-                        Password <input required type= 'password' name='password'/>
-                        <br/>
-                        <input type='submit' value='Login'></input>
-                    </fieldset>
-                </form>
-                {this.state.thinking && this.state.error === null? <img id='thinking' src={thinking} alt='loading...'/>: <span></span>}
-                <div role='alert'>
-                    {this.state.error && <p className='red'>{this.state.error}</p>}
-                </div>
-            </div>
-        )
-    }
+  render() {
+    return(
+      <div className='maindiv'>
+        <form className='loginform form' onSubmit={this.handleSubmitLogin}>
+          <fieldset> 
+            <legend>LogIn</legend>
+            User Name <input required type= 'text' name='username'/>
+            <br/>
+            Password <input required type= 'password' name='password'/>
+            <br/>
+            <input type='submit' value='Login'></input>
+          </fieldset>
+        </form>
+        {this.state.thinking && this.state.error === null? <img id='thinking' src={thinking} alt='loading...'/>: <span></span>}
+        <div role='alert'>
+          {this.state.error && <p className='red'>{this.state.error}</p>}
+        </div>
+      </div>
+    )
+  }
 }

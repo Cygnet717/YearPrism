@@ -68,7 +68,6 @@ const EventsApiService = {
   },
 
   deleteEvent(eventid) {
-    console.log(`${config.API_YearPrism}/events/${eventid}`)
     return fetch(`${config.API_YearPrism}/events/${eventid}`, {
       method: 'DELETE',
       headers: {
