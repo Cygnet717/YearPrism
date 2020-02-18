@@ -5,7 +5,6 @@ import editImg from '../../Images/edit.png';
 import deleteImg from '../../Images/delete.png';
 import nextImg from '../../Images/next.png';
 import backImg from '../../Images/back.png';
-import {Image/*, Transformation, CloudinaryContext*/} from 'cloudinary-react';
 import './YearViewPage.css';
 
 export default class YearView extends Component{
@@ -76,7 +75,6 @@ export default class YearView extends Component{
     }
 
     deleteEventClick(event){
-        console.log(event.eventid)
         if (window.confirm(`Are you sure you want to delete this event? ${event.eventname}`)){
             console.log('deleted')
             EventsService.deleteEvent(event.eventid)
@@ -155,9 +153,6 @@ export default class YearView extends Component{
                         return (
                         <div className='indivevent' id={i.eventid} key={i.eventid}>
                             <p className='eventInfo'>{date.toDateString()}<br/>{i.eventname}<br/> Notes: {i.notes}</p>
-                            <div className='imagebox'>
-                                <Image className='eventImage' cloudName="dingowidget" publicId={i.eventImage} width="100" crop="scale" />
-                            </div>
                             <div className='eventbuttons'>
                                 <img className='editIcon' src={editImg} alt='edit' onClick={() => this.showEditFeature(i)}/>
                                 <img className='editIcon' src ={deleteImg} alt='delete' onClick={() => this.deleteEventClick(i)}/>

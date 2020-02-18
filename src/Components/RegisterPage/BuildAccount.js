@@ -6,7 +6,6 @@ import thinking from '../../Images/spinner.gif';
 import './RegisterPage.css';
 import Input from './Input';
 
-
 export default class BuildAccount extends Component {
   static contextType = UserContext;
   constructor(props){
@@ -106,7 +105,7 @@ export default class BuildAccount extends Component {
               </ul>
             </div>
           </div>
-          <form className='builder'>
+          <form className='builder' id='form'>
             <fieldset>
               <legend>Input New Event</legend>
                 <Input />

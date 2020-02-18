@@ -67,23 +67,19 @@ const EventsApiService = {
         )
   },
 
-
-
   deleteEvent(eventid) {
-    return fetch(`${config.API_YearPrism}/events`, {
+    console.log(`${config.API_YearPrism}/events/${eventid}`)
+    return fetch(`${config.API_YearPrism}/events/${eventid}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
-      body: JSON.stringify({
-        eventid
-      }),
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
+      .then(res => {
+        if(!res.ok){
+          res.json().then(e => Promise.reject(e))
+           }}
       )
   }
 };

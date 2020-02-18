@@ -45,6 +45,7 @@ export default class SearchResults extends Component{
             if(i.category === this.props.match.params.Category){
                 fEvents = fEvents.concat(i)
             }
+            return 'return'
         })
         let sorted = fEvents.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
         this.setState({
