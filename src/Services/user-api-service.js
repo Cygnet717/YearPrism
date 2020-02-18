@@ -32,18 +32,17 @@ const UserApiService = {
   },
 
   deleteUser(id){
-    return fetch(`${config.API_YearPrism}/users`, {
+    return fetch(`${config.API_YearPrism}/users/${id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
-      },
-      body: JSON.stringify({user_id: id}),
+      }
     })
-    .then(res =>
-      (!res.ok)
-      ? res.json().then(e => Promise.reject(e))
-      :res.json()
-      )
+    .then(res => {
+      if(!res.ok){
+        res.json().then(e => Promise.reject(e))
+         }}
+    )
   },
 };
 
