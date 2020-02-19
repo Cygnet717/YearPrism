@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import hamburger from '../../Images/hamburger.png';
 import UserContext from '../../Context/user-context';
 import TokenService from '../../Services/token-service';
-//import logo from '../../Images/Logo.png'
+import logoYP from '../../Images/LogoYP.png'
 import './Header.css';
 
 export default class Header extends Component {
@@ -64,7 +64,7 @@ export default class Header extends Component {
         return (
             <nav className='mainNav'>
                 <Link className='headerLink' to='/'>
-                    <h1>YearPrism</h1>
+                    <img src={logoYP} alt='logo and home button' className='logoimage'/>
                 </Link>
                 {this.context.user_id? this.renderHamburger() : this.renderLogInLink() }
                 
