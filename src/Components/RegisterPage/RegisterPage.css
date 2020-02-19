@@ -81,7 +81,7 @@
   background: rgb(212, 232, 253);
   margin-top: 30px;
   padding: 5px;
-  width: fit-content;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }

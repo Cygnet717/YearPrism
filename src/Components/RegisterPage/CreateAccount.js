@@ -38,7 +38,7 @@ export default class CreateAccount extends Component {
 	
   render() {
     return(
-      <div>
+      <div className='maindiv'>
       	<form className='form' onSubmit={this.handleSubmitNewUser}>
           <fieldset>
             <legend>Create Account</legend>

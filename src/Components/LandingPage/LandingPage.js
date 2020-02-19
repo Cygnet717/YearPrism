@@ -17,8 +17,8 @@ export default class LandingPage extends Component{
                 </p>
                 
                 <p>Try it out with this Demo User Account:<br/>
-                    UserName: <br/>
-                    Password:
+                    UserName: DemoUser<br/>
+                    Password: DemoUser!1
                 </p>
                 <Footer />
             </div>

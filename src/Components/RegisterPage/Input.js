@@ -20,7 +20,7 @@ export default function Input(props) {
             </select>
             <br/>
             <label>Notes </label><br/>
-            <textarea id='notes' name='notes' type='textbox' cols='40' rows='4'/>
+            <textarea id='notes' name='notes' type='textbox' cols='37' rows='4'/>
         </div>
     )
 }
