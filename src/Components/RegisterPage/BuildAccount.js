@@ -121,7 +121,7 @@ export default class BuildAccount extends Component {
           </div>
           <form className='builder' id='form'>
             <fieldset>
-              <legend>Input New Event</legend>
+              <legend>Add a New Event</legend>
                 <Input />
                 <button className='buildButton' onClick={(event) =>this.AddEvent(event)}>Add Event</button>
             </fieldset>

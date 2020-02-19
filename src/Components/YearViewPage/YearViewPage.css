@@ -146,7 +146,13 @@
     background: rgb(212, 232, 253);
     margin-top: 30px;
     padding: 10px;
-    width: 90%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (min-width: 670px){
+    .mainYearViewDiv{
+        max-width: 550px;
+    }
 }

@@ -125,7 +125,7 @@ export default class Home extends Component {
                 <div className='yearlist'>
                     {this.listYearsOfLife(this.context.birthyear, this.context.events).map(i => {
                     return <Link to={`/Year/${i.year}`} key={i.year} className='yearli'>
-                            <img className='arrow' src={rightArrow} alt='right arrow open year'></img>
+                            <img className='arrow' src={rightArrow} alt='right arrow open year'></img>&nbsp;
                             {i.year}&nbsp;
                             {i.Achievements > 0 ? <><img src={achievImg} alt='Achievements'/>&nbsp;</>:<span/>}
                             {i.BodyModification > 0 ? <><img src={modImg} alt='BodyModification'/>&nbsp;</>:<span/>}

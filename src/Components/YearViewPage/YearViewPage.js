@@ -71,7 +71,7 @@ export default class YearView extends Component{
   submitChangeEvent=(e)=>{
 	  e.preventDefault()
     const data = new FormData(e.target)
-		const DateFormated = new Date(data.get('date'))
+    const DateFormated = new Date(data.get('eventdate'))
     let EditedEvent = {
       eventid: this.state.eventid,
       eventdate: DateFormated,
@@ -161,7 +161,7 @@ export default class YearView extends Component{
         <div  className={this.state.edit}>
           <form id='editpopup' className='edit-content' onSubmit={(e) => this.submitChangeEvent(e)}>
             <label>Date </label>
-            <input type='date' name='date' id='date' value={this.state.eventdate} onChange={e => this.changeState(e)}/>
+            <input type='date' name='eventdate' id='eventdate' value={this.state.eventdate} onChange={e => this.changeState(e)}/>
             <br/>
             <label>Event name</label>
 						<br/>
@@ -184,7 +184,7 @@ export default class YearView extends Component{
         </div> 
         <div className={this.state.order}>
         {this.state.yearEvents.map(i => {
-					let date = new Date(i.eventdate.replace(/-/g,'\/').replace(/T.+/, ''))
+					let date = new Date(i.eventdate.replace(/-/g,'/').replace(/T.+/, ''))
           return (
           	<div className='eventbox' id={i.eventid} key={i.eventid}>
 							<div className='indivevent'>

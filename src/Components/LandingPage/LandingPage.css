@@ -5,7 +5,7 @@
     background: rgb(212, 232, 253);
     margin-top: 30px;
     padding: 10px;
-    width: fit-content;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
 }

@@ -51,7 +51,7 @@ export default class CreateAccount extends Component {
               <label>Password </label>
               <input required type= 'password' name='password'/>
               <br/>
-              <span className='criteria'>*Must be 8 characters long and inclue Capital, number, and one of #?!@$%^&*-</span>
+              <span className='criteria'>*Must be 8 characters long and inclue Capital, number,<br/> and one of #?!@$%^&*-</span>
               <br/>
               <input type='submit' value='Build My Calendar'/>
           </fieldset>

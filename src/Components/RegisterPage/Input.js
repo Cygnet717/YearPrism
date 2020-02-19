@@ -9,7 +9,7 @@ export default function Input(props) {
             <input type='date' id='date'/>
             <br/>
             <label>Event name </label><br/>
-            <input type='text' id='eName' placeholder={props.placeholder} size="28"/>
+            <input type='text' id='eName' placeholder={props.placeholder} size="34"/>
             <br/>
             <label>Category </label><br/>
             <select id='category'>
