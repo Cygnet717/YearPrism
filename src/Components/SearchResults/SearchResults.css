@@ -1,3 +1,27 @@
 .categheader{
     text-align: center;
 }
+.indivevent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #C3D1E0;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.eventbox{
+    display: flex;
+    border: 1px solid #37647B;
+    border-radius: 5px;
+    background-color: #0A3545;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    -moz-box-shadow:    3px 3px 5px 6px rgb(152, 162, 173);
+    -webkit-box-shadow: 3px 3px 5px 6px rgb(152, 162, 173);
+    box-shadow:         3px 3px 5px 2px rgb(152, 162, 173);
+}
+
+.eventdiv{
+    padding: 3px;
+}

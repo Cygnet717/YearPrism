@@ -80,15 +80,15 @@ export default class Home extends Component {
                     <button onClick={() =>this.showImgKey()} className='homeeventbutton'>Symbol Key</button>
                 </div>
                 <form className='searchform'>
-                    <fieldset>
+                    <fieldset className='searchfieldset'>
                     <label>Search: </label>
                     <select id='category'  onChange={(e) => {this.setCategory(e)}}>
                         <option hidden defaultValue name='category'>Select</option>
                         {categories.map(i => {
                             return <option key={i} name='category' value={i}>{i}</option>
                         })}
-                    </select>
-                    <Link to={`/Search/${this.state.SearchCategory}`}>Go</Link>
+                    </select><span> </span>
+                    <Link to={`/Search/${this.state.SearchCategory}`} className='goLink'>Go</Link>
                     </fieldset>
                 </form>
                 <div className={`falsemodal ${this.state.key}`} onClick={() =>this.showImgKey()}>

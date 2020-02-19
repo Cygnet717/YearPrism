@@ -117,7 +117,7 @@ export default class BuildAccount extends Component {
           </div>
           {this.state.thinking? this.renderThinking(): <span></span>}
           {this.state.newEvents.length === 0 ? <></> : ListEvents}
-          <Link className='buildButton link' to={'/Home'} onClick={() => this.submitNewEvents()}>Done</Link>
+          <Link className='buildButton link' to={'/Home'} onClick={() => this.submitNewEvents()}>Submit</Link>
       </div>
     )
   }
