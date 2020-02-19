@@ -5,6 +5,7 @@ import editImg from '../../Images/edit.png';
 import deleteImg from '../../Images/delete.png';
 import nextImg from '../../Images/next.png';
 import backImg from '../../Images/back.png';
+import reverse from '../../Images/reverse.png';
 import './YearViewPage.css';
 
 export default class YearView extends Component{
@@ -17,6 +18,7 @@ export default class YearView extends Component{
     this.state ={
     	yearEvents : [],
       edit: 'hiddenEdit',
+      order: 'OtoN',
       eventid: '',
       eventdate: '',
       eventname: '',
@@ -37,7 +39,15 @@ export default class YearView extends Component{
         notes: event.notes,
       })
     } 
-	}
+  }
+  
+  reverseOrder() {
+    if(this.state.order === 'OtoN'){
+      this.setState({ order: 'NtoO' })
+    } else {
+      this.setState({ order: 'OtoN' })
+    }
+  }
 	
 	changeState(e){
 		let obj={};
@@ -120,7 +130,10 @@ export default class YearView extends Component{
     const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
     return(
 	    <div className='mainYearViewDiv'>
-        <Link to={'/Home'} className='homenavlink'>Home</Link>
+        <div className='home_sort'>
+          <Link to={'/Home'} className='homenavlink'>Home</Link>
+          <img className='reverseIcon' src={reverse} alt='reverse order' onClick={() =>this.reverseOrder()}/>
+        </div>
         <div className='yearnav'>
           <Link to={`/Year/${minusOne}`} key={minusOne} onClick={() => {this.updatePage(minusOne)}} className='yearnavlink' >
             <img src={backImg} alt='back'/>{minusOne}
@@ -155,6 +168,7 @@ export default class YearView extends Component{
 						<button type='button' onClick={() =>this.cancelEdit()}>Cancel</button>
           </form>
         </div> 
+        <div className={this.state.order}>
         {this.state.yearEvents.map(i => {
 					let date = new Date(i.eventdate.replace(/-/g,'\/').replace(/T.+/, ''))
           return (
@@ -172,6 +186,7 @@ export default class YearView extends Component{
             </div>
           )
         })}
+        </div>
         <div className='linkDiv'>
         <Link to={'/AddEvent'} className='addeventlink'>AddEvent</Link>
       </div>

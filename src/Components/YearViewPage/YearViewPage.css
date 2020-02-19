@@ -19,6 +19,26 @@
     box-shadow:         3px 3px 5px 2px rgb(152, 162, 173);
 }
 
+.OtoN{
+    display: flex;
+    flex-direction: column;
+}
+
+.NtoO{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.home_sort{
+    display: flex;
+    justify-content: space-around;
+}
+
+.reverseIcon{
+    justify-self: flex-end;
+    
+}
+
 .eventdiv{
     padding: 3px;
 }
@@ -44,8 +64,6 @@
 .homenavlink{
     text-decoration: none;
     width: fit-content;
-    margin-right: auto;
-    margin-left: auto;
     padding: 5px;
     border: 1px solid #C3D1E0;
     background-color: #37647B;

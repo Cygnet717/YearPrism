@@ -4,6 +4,7 @@ import deleteImg from '../../Images/delete.png';
 import { Link } from 'react-router-dom';
 import UserContext from '../../Context/user-context';
 import EventsService from '../../Services/events-service';
+import reverse from '../../Images/reverse.png';
 import './SearchResults.css'
 
 export default class SearchResults extends Component{
@@ -16,6 +17,7 @@ export default class SearchResults extends Component{
     this.state ={
       categoryFilteredEvents: [],
       editSearched: 'hiddenEdit',
+      order: 'OtoN',
 			category: '',
       eventname: '',
       eventdate: '',
@@ -36,7 +38,15 @@ export default class SearchResults extends Component{
       notes: event.notes,
     })
   } 
-	}
+  }
+  
+  reverseOrder() {
+    if(this.state.order === 'OtoN'){
+      this.setState({ order: 'NtoO' })
+    } else {
+      this.setState({ order: 'OtoN' })
+    }
+  }
 
   filterCategoryEvents() {
     let fEvents =[]
@@ -113,7 +123,10 @@ export default class SearchResults extends Component{
     const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
     return(
       <div className='mainYearViewDiv'>
-        <Link to={'/Home'} className='homenavlink'>Home</Link>
+        <div className='home_sort'>
+          <Link to={'/Home'} className='homenavlink'>Home</Link>
+          <img className='reverseIcon' src={reverse} alt='reverse order' onClick={() =>this.reverseOrder()}/>
+        </div>
           <h3 className='categheader'>{categName}</h3>
           <div  className={this.state.editSearched}>
           <form id='editpopup' className='edit-content' onSubmit={(e) => this.submitChangeEvent(e)}>
@@ -139,6 +152,7 @@ export default class SearchResults extends Component{
 						<button type='button' onClick={() =>this.cancelEdit()}>Cancel</button>
           </form>
           </div> 
+          <div className={this.state.order}>
           {this.state.categoryFilteredEvents.map(i => {
             let date = new Date(i.eventdate.replace(/-/g,'\/').replace(/T.+/, ''))
             return (
@@ -156,6 +170,7 @@ export default class SearchResults extends Component{
               </div>
             )
           })}
+          </div>
           <div className='linkDiv'>
           <Link to={'/AddEvent'} className='addeventlink'>AddEvent</Link>
           </div>

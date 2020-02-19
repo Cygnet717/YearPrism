@@ -25,3 +25,23 @@
 .eventdiv{
     padding: 3px;
 }
+
+.OtoN{
+    display: flex;
+    flex-direction: column;
+}
+
+.NtoO{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.home_sort{
+    display: flex;
+    justify-content: space-around;
+}
+
+.reverseIcon{
+    justify-self: flex-end;
+    
+}
