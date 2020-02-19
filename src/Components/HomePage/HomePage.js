@@ -71,7 +71,18 @@ export default class Home extends Component {
     }
 
     render(){
-        
+        if(!sessionStorage.user_id){
+            return (<div className='maindiv'>
+                <h4>Oops you arn't logged in!</h4>
+                <div className=' oopsbutton'>
+                <Link 
+                    className='button'
+                    to='/'>
+                    Home Page
+                </Link>
+                </div>
+                </div>)
+        }
         const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
         return(
             <div className='mainHomeDiv'>
@@ -88,7 +99,10 @@ export default class Home extends Component {
                             return <option key={i} name='category' value={i}>{i}</option>
                         })}
                     </select><span> </span>
-                    <Link to={`/Search/${this.state.SearchCategory}`} className='goLink'>Go</Link>
+                    {this.state.SearchCategory === ''?
+                        <div className='fakeGoButton'>Go</div>: 
+                        <Link to={`/Search/${this.state.SearchCategory}`} className='goLink'>Go</Link>
+                    }
                     </fieldset>
                 </form>
                 <div className={`falsemodal ${this.state.key}`} onClick={() =>this.showImgKey()}>

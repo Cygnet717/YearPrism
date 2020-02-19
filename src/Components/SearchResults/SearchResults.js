@@ -119,6 +119,20 @@ export default class SearchResults extends Component{
     this.filterCategoryEvents()
   }
   render(){
+    if(!sessionStorage.user_id){
+      return (
+        <div className='maindiv'>
+          <h4>Oops you arn't logged in!</h4>
+          <div className=' oopsbutton'>
+            <Link 
+                className='button'
+                to='/'>
+                Home Page
+            </Link>
+          </div>
+        </div>
+      )
+    }
     const categName = this.props.match.params.Category
     const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
     return(

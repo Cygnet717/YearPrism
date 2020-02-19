@@ -15,6 +15,20 @@ export default class DeleteAccount extends Component {
     }
 
     render(){
+        if(!sessionStorage.user_id){
+            return (
+              <div className='maindiv'>
+                <h4>Oops you arn't logged in!</h4>
+                <div className=' oopsbutton'>
+                  <Link 
+                      className='button'
+                      to='/'>
+                      Home Page
+                  </Link>
+                </div>
+              </div>
+            )
+          }
         return(
             <div className='maindiv'>
                 <p className='deletequestion'>Are you sure you want to delete your account?</p>

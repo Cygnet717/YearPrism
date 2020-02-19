@@ -61,7 +61,7 @@ button, Link {
   text-decoration: none;
 }
 
-.goLink{
+.goLink, .fakeGoButton{
   border: 1px solid #C3D1E0;
   background-color: #37647B;
   font-family: 'Quicksand', sans-serif;
@@ -69,6 +69,18 @@ button, Link {
   font-size: small;
   color: #C3D1E0;
   text-decoration: none;
+}
+
+.fakeGoButton{
+  width: fit-content;
+  display: inline-block;
+  background-color: rgb(99, 158, 185);
+}
+
+.oopsbutton{
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
 }
 
 .hidden{

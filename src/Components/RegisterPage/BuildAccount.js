@@ -84,6 +84,20 @@ export default class BuildAccount extends Component {
   };
 
   render(){
+    if(!sessionStorage.user_id){
+      return (
+        <div className='maindiv'>
+          <h4>Oops you arn't logged in!</h4>
+          <div className=' oopsbutton'>
+            <Link 
+                className='button'
+                to='/'>
+                Home Page
+            </Link>
+          </div>
+        </div>
+      )
+    }
     let ListEvents = this.state.newEvents.map(i => {
       return <p key={i.eventname}>{i.eventdate}, {i.eventname}, {i.category}, {i.notes}</p>
     })
