@@ -149,30 +149,34 @@ export default class SearchResults extends Component{
           <img className='reverseIcon' src={reverse} alt='reverse order' onClick={() =>this.context.updateOrder()}/>
         </div>
           <h3 className='categheader'>{categName}</h3>
-          <div  className={this.state.editSearched}>
-          <form id='editpopup' className='edit-content' onSubmit={(e) => this.checkDateValid(e)}>
-            <label>Date </label>
-            <input type='date' name='eventdate' id='eventdate' value={this.state.eventdate} onChange={e => this.changeState(e)}/>
-            <br/>
-            <label>Event name</label>
-						<br/>
-            <input type='text' name='eventname' id='eventname' value={this.state.eventname} onChange={e => this.changeState(e)} size="28"/>
-            <br/>
-            <label>Category </label>
-            <select id='category' name='category' value={categories.find(cat => cat === this.state.category)} onChange={e => this.changeState(e)}>
-              {categories.map(cat => {
-                return <option id='category' key={cat} name='category' value={cat}>{cat}</option>
-              })}
-            </select>
-            <br/>
-            <label>Notes</label>
-						<br/>
-            <textarea id='notes' name='notes' value={this.state.notes} onChange={e => this.changeState(e)} type='textbox' cols='40' rows='4'/>
-            <br/>
-            <input type='submit'/>
-						<button type='button' onClick={() =>this.cancelEdit()}>Cancel</button>
-          </form>
-          </div> 
+          <div className={this.state.editSearched} onClick={() =>this.cancelEdit()}>
+            <div  className='realform'>
+              <form id='editpopup' className='edit-content' onSubmit={(e) => this.checkDateValid(e)}>
+                <label>Date </label>
+                <input type='date' name='eventdate' id='eventdate' value={this.state.eventdate} onChange={e => this.changeState(e)}/>
+                <br/>
+                <label>Event name</label>
+                <br/>
+                <input type='text' name='eventname' id='eventname' value={this.state.eventname} onChange={e => this.changeState(e)} size="28"/>
+                <br/>
+                <label>Category </label>
+                <select id='category' name='category' value={categories.find(cat => cat === this.state.category)} onChange={e => this.changeState(e)}>
+                  {categories.map(cat => {
+                    return <option id='category' key={cat} name='category' value={cat}>{cat}</option>
+                  })}
+                </select>
+                <br/>
+                <label>Notes</label>
+                <br/>
+                <textarea id='notes' name='notes' value={this.state.notes} onChange={e => this.changeState(e)} type='textbox' cols='40' rows='4'/>
+                <br/>
+                <div className='buttonholder'>
+                  <input type='submit'/>
+                  <input type='button' onClick={() =>this.cancelEdit()} value='Cancel'/>
+              </div>
+              </form>
+            </div> 
+          </div>
           <div className={this.context.order}>
           {this.state.categoryFilteredEvents.map(i => {
             let date = new Date(i.eventdate.replace(/-/g,'/').replace(/T.+/, ''))

@@ -166,31 +166,34 @@ export default class YearView extends Component{
             {plusOne}<img src={nextImg} alt='next'/>
           </Link>
         </div>
-        
-        <div  className={this.state.edit}>
-          <form id='editpopup' className='edit-content' onSubmit={(e) => this.checkDateValid(e)}>
-            <label>Date </label>
-            <input type='date' name='eventdate' id='eventdate' value={this.state.eventdate} onChange={e => this.changeState(e)}/>
-            <br/>
-            <label>Event name</label>
-						<br/>
-            <input type='text' name='eventname' id='eventname' value={this.state.eventname} onChange={e => this.changeState(e)} size="28"/>
-            <br/>
-            <label>Category </label>
-            <select id='category' name='category' value={categories.find(cat => cat === this.state.category)} onChange={e => this.changeState(e)}>
-              {categories.map(cat => {
-                return <option id='category' key={cat} name='category' value={cat}>{cat}</option>
-              })}
-            </select>
-            <br/>
-            <label>Notes</label>
-						<br/>
-            <textarea id='notes' name='notes' value={this.state.notes} onChange={e => this.changeState(e)} type='textbox' cols='40' rows='4'/>
-            <br/>
-            <input type='submit'/>
-						<button type='button' onClick={() =>this.cancelEdit()}>Cancel</button>
-          </form>
-        </div> 
+        <div className={this.state.edit} onClick={() => this.cancelEdit()}>
+          <div  className='realform'>
+            <form id='editpopup' className='edit-content' onSubmit={(e) => this.checkDateValid(e)}>
+              <label>Date </label>
+              <input type='date' name='eventdate' id='eventdate' value={this.state.eventdate} onChange={e => this.changeState(e)}/>
+              <br/>
+              <label>Event name</label>
+              <br/>
+              <input type='text' name='eventname' id='eventname' value={this.state.eventname} onChange={e => this.changeState(e)} size="34"/>
+              <br/>
+              <label>Category </label>
+              <select id='category' name='category' value={categories.find(cat => cat === this.state.category)} onChange={e => this.changeState(e)}>
+                {categories.map(cat => {
+                  return <option id='category' key={cat} name='category' value={cat}>{cat}</option>
+                })}
+              </select>
+              <br/>
+              <label>Notes</label>
+              <br/>
+              <textarea id='notes' name='notes' value={this.state.notes} onChange={e => this.changeState(e)} type='textbox' cols='36' rows='4'/>
+              <br/>
+              <div className='buttonholder'>
+                <input type='submit'/>
+                <input type='button' onClick={() =>this.cancelEdit()} value='Cancel'/>
+              </div>
+            </form>
+          </div> 
+        </div>
         <div className={this.context.order}>
         {this.state.yearEvents.map(i => {
 					let date = new Date(i.eventdate.replace(/-/g,'/').replace(/T.+/, ''))
