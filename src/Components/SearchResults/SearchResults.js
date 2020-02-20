@@ -17,7 +17,6 @@ export default class SearchResults extends Component{
     this.state ={
       categoryFilteredEvents: [],
       editSearched: 'hiddenEdit',
-      order: 'OtoN',
 			category: '',
       eventname: '',
       eventdate: '',
@@ -38,14 +37,6 @@ export default class SearchResults extends Component{
       notes: event.notes,
     })
   } 
-  }
-  
-  reverseOrder() {
-    if(this.state.order === 'OtoN'){
-      this.setState({ order: 'NtoO' })
-    } else {
-      this.setState({ order: 'OtoN' })
-    }
   }
 
   filterCategoryEvents() {
@@ -155,7 +146,7 @@ export default class SearchResults extends Component{
       <div className='mainYearViewDiv'>
         <div className='home_sort'>
           <Link to={'/Home'} className='homenavlink'>Home</Link>
-          <img className='reverseIcon' src={reverse} alt='reverse order' onClick={() =>this.reverseOrder()}/>
+          <img className='reverseIcon' src={reverse} alt='reverse order' onClick={() =>this.context.updateOrder()}/>
         </div>
           <h3 className='categheader'>{categName}</h3>
           <div  className={this.state.editSearched}>
@@ -182,7 +173,7 @@ export default class SearchResults extends Component{
 						<button type='button' onClick={() =>this.cancelEdit()}>Cancel</button>
           </form>
           </div> 
-          <div className={this.state.order}>
+          <div className={this.context.order}>
           {this.state.categoryFilteredEvents.map(i => {
             let date = new Date(i.eventdate.replace(/-/g,'/').replace(/T.+/, ''))
             return (

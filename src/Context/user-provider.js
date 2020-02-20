@@ -11,6 +11,14 @@ class UserProvider extends Component {
         username: '' || window.sessionStorage.username,
         authToken: '' || window.sessionStorage.authToken,
         events: [],
+        order: 'OtoN',
+        updateOrder: () => {
+            if(this.state.order === 'OtoN'){
+                this.setState({ order: 'NtoO' })
+              } else {
+                this.setState({ order: 'OtoN' })
+              }
+        },
         updateUser: (user) => {
             this.setState({
                 user_id: user.user_id,

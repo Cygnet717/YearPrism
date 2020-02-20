@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import EventsService from '../../Services/events-service';
+import UserContext from '../../Context/user-context';
 import editImg from '../../Images/edit.png';
 import deleteImg from '../../Images/delete.png';
 import nextImg from '../../Images/next.png';
@@ -9,6 +10,7 @@ import reverse from '../../Images/reverse.png';
 import './YearViewPage.css';
 
 export default class YearView extends Component{
+  static contextType = UserContext;
   static defaultProps ={
   	match: { params: {}},
   };
@@ -18,7 +20,6 @@ export default class YearView extends Component{
     this.state ={
     	yearEvents : [],
       edit: 'hiddenEdit',
-      order: 'OtoN',
       eventid: '',
       eventdate: '',
       eventname: '',
@@ -39,15 +40,7 @@ export default class YearView extends Component{
         notes: event.notes,
       })
     } 
-  }
-  
-  reverseOrder() {
-    if(this.state.order === 'OtoN'){
-      this.setState({ order: 'NtoO' })
-    } else {
-      this.setState({ order: 'OtoN' })
-    }
-  }
+  };
 	
 	changeState(e){
 		let obj={};
@@ -55,7 +48,7 @@ export default class YearView extends Component{
 		let value = e.target.value;
 		obj[key] = value;
 		this.setState( obj )
-	}
+	};
 
   cancelEdit(){
     this.setState({
@@ -66,7 +59,7 @@ export default class YearView extends Component{
       eventid: '',
       notes: ''
     })
-  }
+  };
 
   submitChangeEvent=(e)=>{
 	  e.preventDefault()
@@ -116,7 +109,7 @@ export default class YearView extends Component{
       } else {
         console.log('not deleted')
       }
-  }
+  };
 
 	updatePage(year){
     EventsService.getYearEvents(year)
@@ -126,7 +119,7 @@ export default class YearView extends Component{
         yearEvents: sorted
       })
     })  
-  }
+  };
 
   componentDidMount(){
     const year = this.props.match.params.year
@@ -137,7 +130,7 @@ export default class YearView extends Component{
 	      yearEvents: sorted
       })
     })  
-  }
+  };
 
   render(){
     if(!sessionStorage.user_id){
@@ -162,7 +155,7 @@ export default class YearView extends Component{
 	    <div className='mainYearViewDiv'>
         <div className='home_sort'>
           <Link to={'/Home'} className='homenavlink'>Home</Link>
-          <img className='reverseIcon' src={reverse} alt='reverse order' onClick={() =>this.reverseOrder()}/>
+          <img className='reverseIcon' src={reverse} alt='reverse order' onClick={() =>this.context.updateOrder()}/>
         </div>
         <div className='yearnav'>
           <Link to={`/Year/${minusOne}`} key={minusOne} onClick={() => {this.updatePage(minusOne)}} className='yearnavlink' >
@@ -198,7 +191,7 @@ export default class YearView extends Component{
 						<button type='button' onClick={() =>this.cancelEdit()}>Cancel</button>
           </form>
         </div> 
-        <div className={this.state.order}>
+        <div className={this.context.order}>
         {this.state.yearEvents.map(i => {
 					let date = new Date(i.eventdate.replace(/-/g,'/').replace(/T.+/, ''))
           return (
