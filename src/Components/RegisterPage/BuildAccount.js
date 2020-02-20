@@ -53,6 +53,21 @@ export default class BuildAccount extends Component {
     document.getElementById('category').value ='default';
   };
 
+  checkDateValid(event){
+    let date = document.getElementById('date').value;
+    let name = document.getElementById('eName').value;
+    let cat = document.getElementById('category').value;
+    if(date < this.context.birthyear || date> 2020){
+      alert('Event date must be between birth year and present')
+    } else if(name === '') {
+      alert('Event name must be given')
+    } else if(cat === 'Select'){
+      alert('Please select a category')
+    } else{
+      this.AddEvent(event)
+    }
+  }
+
   submitNewEvents() {
 		this.setState({
 			thinking: true,
@@ -123,7 +138,7 @@ export default class BuildAccount extends Component {
             <fieldset>
               <legend>Add a New Event</legend>
                 <Input />
-                <button className='buildButton' onClick={(event) =>this.AddEvent(event)}>Add Event</button>
+                <button className='buildButton' onClick={(event) =>this.checkDateValid(event)}>Add Event</button>
             </fieldset>
           </form>
           <div role='alert'>
