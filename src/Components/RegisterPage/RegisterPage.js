@@ -7,7 +7,7 @@ export default class RegisterPage extends Component {
     constructor(props){
         super(props)
         this.state ={
-            step: 2,
+            step: 1,
         }
     }
     StepTwo(){
