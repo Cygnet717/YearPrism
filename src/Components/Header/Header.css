@@ -19,12 +19,22 @@
 .headerLink{
     margin-left: 20px;
     height: fit-content;
+    
 }
 
 .logoimage{
     border: 2px solid #C3D1E0;
     border-radius: 15px;
     height: 85px;
+}
+
+.salutation{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.headerright{
+    display: flex;
+    align-items: center;
 }
 
 .button{

@@ -4,7 +4,6 @@ import UserContext from '../../Context/user-context';
 import { Link } from 'react-router-dom';
 import thinking from '../../Images/spinner.gif';
 import './RegisterPage.css';
-import Input from './Input';
 
 export default class BuildAccount extends Component {
   static contextType = UserContext;
@@ -41,24 +40,24 @@ export default class BuildAccount extends Component {
     event.preventDefault()
     this.setState({
       newEvents: this.state.newEvents.concat({
-        eventdate: document.getElementById('date').value,
-        eventname: document.getElementById('eName').value,
+        eventdate: document.getElementById('eventdate').value,
+        eventname: document.getElementById('eventname').value,
         category: document.getElementById('category').value,
         notes: document.getElementById('notes').value
       })
     })
-    document.getElementById('date').value ='';
-    document.getElementById('eName').value ='';
+    document.getElementById('eventdate').value ='';
+    document.getElementById('eventname').value ='';
     document.getElementById('notes').value ='';
     document.getElementById('category').value ='default';
   };
 
   checkDateValid(event){
     event.preventDefault()
-    let date = document.getElementById('date').value;
-    let name = document.getElementById('eName').value;
+    let eventdate = document.getElementById('eventdate').value;
+    let name = document.getElementById('eventname').value;
     let cat = document.getElementById('category').value;
-    if(date < this.context.birthyear || date.toString()> '2021-01-01'){
+    if(eventdate < this.context.birthyear || eventdate.toString()> '2021-01-01'){
       alert('Event date must be between birth year and present')
     } else if(name === '') {
       alert('Event name must be given')
@@ -100,6 +99,7 @@ export default class BuildAccount extends Component {
   };
 
   render(){
+    const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
     if(!sessionStorage.user_id){
       return (
         <div className='maindiv'>
@@ -119,7 +119,7 @@ export default class BuildAccount extends Component {
     })
     return(
       <div className='mainBuildDiv'>
-        <button className='buildButton' onClick={() => this.ShowHideSugg()}>Suggestions</button>
+        
           <div className={`falsesugg ${this.state.suggestions}`} onClick={() => this.ShowHideSugg()}>
             <div id='suggestionsdropdown' className={`truesugg ${this.state.suggestions}`}>
               <ul className='sugg-content'>
@@ -138,7 +138,26 @@ export default class BuildAccount extends Component {
           <form className='builder' id='form'>
             <fieldset>
               <legend>Add a New Event</legend>
-                <Input />
+              <div>
+            <label>Date </label><br/>
+            <input type='date' id='eventdate'/>
+            <br/>
+            <label>Event name </label><br/>
+            <input type='text' id='eventname' size="34"/>
+            <br/>
+            <label>Category </label>
+            <button className='buildButton examplesbutton' onClick={() => this.ShowHideSugg()}>Examples</button>
+            <br/>
+            <select id='category'>
+                <option hidden defaultValue>Select</option>
+                {categories.map(i => {
+                    return <option id='category' key={i} name='category' value={i}>{i}</option>
+                })}
+            </select>
+            <br/>
+            <label>Notes </label><br/>
+            <textarea id='notes' name='notes' type='textbox' cols='37' rows='4'/>
+        </div>
                 <button className='buildButton' onClick={(event) =>this.checkDateValid(event)}>Add Event</button>
             </fieldset>
           </form>
@@ -147,7 +166,10 @@ export default class BuildAccount extends Component {
           </div>
           {this.state.thinking? this.renderThinking(): <span></span>}
           {this.state.newEvents.length === 0 ? <></> : ListEvents}
-          <Link className='buildButton link' to={'/Home'} onClick={() => this.submitNewEvents()}>Submit</Link>
+          {this.state.newEvents.length === 0 
+          ? <div className='fakeGoButton'>Submit</div>
+          : <Link className='buildButton link' to={'/Home'} onClick={() => this.submitNewEvents()}>Submit</Link>}
+          
       </div>
     )
   }

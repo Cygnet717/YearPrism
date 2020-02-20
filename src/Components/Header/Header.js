@@ -26,7 +26,8 @@ export default class Header extends Component {
 
     renderHamburger(){
         return(
-            <div>
+            <div className='headerright'>
+                <h4 className='salutation'>Hi, {this.context.username}</h4>
                 <img className='hamburger' 
                     src={hamburger} alt='Hamburger Menu' 
                     onClick={()=>{this.RenderBurgerMenu()}}>

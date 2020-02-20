@@ -46,7 +46,7 @@ export default class CreateAccount extends Component {
               <input required type= 'text' name='username'/>
               <br/>
               <label>Birth Year</label>
-              <input required type='number' min='1900' max='2060' name='birthyear'/>
+              <input required type='number' min='1900' max='2021' name='birthyear'/>
               <br/>
               <label>Password </label>
               <input required type= 'password' name='password'/>
