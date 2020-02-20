@@ -94,7 +94,7 @@ export default class YearView extends Component{
       alert('Event date must be between birth year and present')
     } else if(name === '') {
       alert('Event name must be given')
-    } else if(cat === 'Select'){
+    } else if(cat === 'Select' || cat === ''){
       alert('Please select a category')
     } else{
       this.submitChangeEvent(event)

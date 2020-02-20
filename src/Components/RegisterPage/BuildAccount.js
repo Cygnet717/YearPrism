@@ -3,6 +3,7 @@ import EventsService from '../../Services/events-service';
 import UserContext from '../../Context/user-context';
 import { Link } from 'react-router-dom';
 import thinking from '../../Images/spinner.gif';
+import remove from '../../Images/remove.png';
 import './RegisterPage.css';
 
 export default class BuildAccount extends Component {
@@ -61,7 +62,7 @@ export default class BuildAccount extends Component {
       alert('Event date must be between birth year and present')
     } else if(name === '') {
       alert('Event name must be given')
-    } else if(cat === 'Select'){
+    } else if(cat === 'Select' || cat === ''){
       alert('Please select a category')
     } else{
       this.AddEvent(event)
@@ -98,6 +99,11 @@ export default class BuildAccount extends Component {
     )
   };
 
+  removeQueuedEvent(unwanted){
+    let arrOneLess = this.state.newEvents.filter(inv => inv !== unwanted) 
+    this.setState({ newEvents: arrOneLess})
+  }
+
   render(){
     const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
     if(!sessionStorage.user_id){
@@ -115,7 +121,15 @@ export default class BuildAccount extends Component {
       )
     }
     let ListEvents = this.state.newEvents.map(i => {
-      return <p key={i.eventname}>{i.eventdate}, {i.eventname}, {i.category}, {i.notes}</p>
+      let unique = Math.floor(Math.random() * 1000)
+      return (
+        <div className='eventQueue' key={unique}>
+          <p>{i.eventdate}, Name: {i.eventname}, {i.category}, Notes: {i.notes}</p>
+          <div className='deleteimage'>
+            <img src={remove} alt='delete event' onClick={() =>this.removeQueuedEvent(i)}/>
+          </div>
+        </div>
+      )
     })
     return(
       <div className='mainBuildDiv'>

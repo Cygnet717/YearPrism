@@ -21,6 +21,21 @@
   margin-top: 3px;
 }
 
+.eventQueue{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #37647B;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
+}
+
+.deleteimage{
+  display: flex;
+  align-items: center;
+}
+
 .link{
   text-decoration: none;
   margin-top: 5px;
