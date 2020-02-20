@@ -84,6 +84,22 @@ export default class SearchResults extends Component{
       })
     })
     this.cancelEdit()
+  };
+
+  checkDateValid(event){
+    event.preventDefault()
+    let date = this.state.eventdate;
+    let name = this.state.eventname;
+    let cat = this.state.category;
+    if(date < this.context.birthyear || date.toString()> '2021-01-01'){
+      alert('Event date must be between birth year and present')
+    } else if(name === '') {
+      alert('Event name must be given')
+    } else if(cat === 'Select'){
+      alert('Please select a category')
+    } else{
+      this.submitChangeEvent(event)
+    }
   }
 
   changeState(e){
@@ -143,7 +159,7 @@ export default class SearchResults extends Component{
         </div>
           <h3 className='categheader'>{categName}</h3>
           <div  className={this.state.editSearched}>
-          <form id='editpopup' className='edit-content' onSubmit={(e) => this.submitChangeEvent(e)}>
+          <form id='editpopup' className='edit-content' onSubmit={(e) => this.checkDateValid(e)}>
             <label>Date </label>
             <input type='date' name='eventdate' id='eventdate' value={this.state.eventdate} onChange={e => this.changeState(e)}/>
             <br/>

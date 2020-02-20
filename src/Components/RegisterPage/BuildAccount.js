@@ -54,10 +54,11 @@ export default class BuildAccount extends Component {
   };
 
   checkDateValid(event){
+    event.preventDefault()
     let date = document.getElementById('date').value;
     let name = document.getElementById('eName').value;
     let cat = document.getElementById('category').value;
-    if(date < this.context.birthyear || date> 2020){
+    if(date < this.context.birthyear || date.toString()> '2021-01-01'){
       alert('Event date must be between birth year and present')
     } else if(name === '') {
       alert('Event name must be given')
