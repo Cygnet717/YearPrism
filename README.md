@@ -1,68 +1,271 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# YearPrism
+http://yearprism.herokuapp.com/
 
-## Available Scripts
 
-In the project directory, you can run:
+## Summary
 
-### `npm start`
+## Technology Used
+    JavaScript, React, PostgreSQL, HTML, and CSS
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Screenshots
+### Landing Page
+![Landing Page](/ScreenShots/Landing.png "Landing Page")
+![Mobile Landing Page](/ScreenShots/LandingMobile.png "Mobile Landing Page")
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Home Page
+![Home Page](/ScreenShots/Home.png "Home Page")
+![Mobile Home Page](/ScreenShots/HomeMobile.png "Mobile Home Page")
 
-### `npm test`
+### Add Event Page
+![Add Event Page](/ScreenShots/AddEvent.png "Add Event Page")
+![Mobile Add Event Page](/ScreenShots/AddEventMobile.png "Mobile Add Event Page")
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Year View Page
+![Year View Page](/ScreenShots/YearView.png "Year View Page")
+![Mobile Year View Page](/ScreenShots/YearViewMobile.png "Mobile Year View Page")
 
-### `npm run build`
+### Search Events Page
+![Search Events Page](/ScreenShots/SearchView.png "Search Events Page")
+![Mobile Search Events Page](/ScreenShots/SearchViewMobile.png "Mobile Search Events Page")
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## API Documentation 
+### Getting Started
+To use API endpoints:
+https://yearprism-api.herokuapp.com/api
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### EndPoints
+**/**
+>Test
+Response 
 
-### `npm run eject`
+    [
+        {"Hello, world!"}
+    ]
+    
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**/users**  POST
+>Adds a new user
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Send 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    [
+        {"username": "Picard", "birthyear": "2305", "password": "Makeitso#1"}
+    ]
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+*username must be unique, password must contain 8 characters long and inclue Capital, number, and one of #?!@$%^&*-
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Response  
 
-### Code Splitting
+    [
+        {
+        "authToken": *token*,
+        "user": {
+            "username": "Picard",
+            "user_id": 99,
+            "birthyear": 2305
+            }
+        }
+    ]
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+**/users/:id** DELETE
+>Deletes user
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+**/login**  POST
+>Logsin user
 
-### Advanced Configuration
+Send 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+    [
+        {"username": "Picard", "password": "Makeitso#1"}
+    ]
 
-### Deployment
+Response 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+    [
+        {
+        "authToken": *token*,
+        "user": {
+            "username": "Picard",
+            "user_id": 99,
+            "birthyear": 2305
+            }
+        }
+    ]
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+**/events/**   GET
+>Gets all events a user has made
+
+Send 
+
+    [
+        {"user_id": 99}
+    ]
+
+Response 
+
+    [
+    {
+        "eventid": 53,
+        "user_id": 99,
+        "eventdate": "2020-02-06T06:00:00.000Z",
+        "eventname": "Borded the Enterprise",
+        "category": "Job",
+        "notes": ""
+    },
+    {
+        "eventid": 54,
+        "user_id": 99,
+        "eventdate": "2020-02-06T06:00:00.000Z",
+        "eventname": "Encountered the Borg",
+        "category": "Achievement",
+        "notes": "This should be fun"
+    }
+]
+
+
+**/events/**   POST
+>adds an event to a users account
+
+Send 
+
+    [
+        {
+            "user_id": 99,
+            "eventdate": "2013-02-01T06:00:00.000Z",
+            "eventname": "Shot with an arrow",
+            "category": "Medical",
+            "notes": ""
+        }
+    ]
+
+Response 
+
+    [
+        {
+            "eventid": 25,
+            "user_id": 99,
+            "eventdate": "2013-02-01T06:00:00.000Z",
+            "eventname": "Shot with an arrow",
+            "category": "Medical",
+            "notes": ""
+        }
+    ]
+
+
+**/events/**   PATCH
+>modifies an event in a users account
+
+Send 
+
+    [
+        {
+            "eventid": 25,
+            "user_id": 99,
+            "eventdate": "2013-02-01T06:00:00.000Z",
+            "eventname": "Shot with an arrow",
+            "category": "Medical",
+            "notes": "At least it convinced the inhabitants of Mintaka III that I an not a god."
+        }
+    ]
+
+Response 
+
+    [
+        {
+            "eventid": 25,
+            "user_id": 99,
+            "eventdate": "2013-02-01T06:00:00.000Z",
+            "eventname": "Shot with an arrow",
+            "category": "Medical",
+            "notes": "At least it convinced the inhabitants of Mintaka III that I an not a god."
+        }
+    ]
+
+
+
+**/events/:id**  DELETE
+>Deletes event from users account
+
+Send
+
+    [
+        {"eventid": 100}
+    ]
+    
+Response
+
+    [
+        {message: "deleted"}
+    ]
+
+
+
+**/events/:year**  GET
+>Gets all events in a year
+
+Send
+
+    [
+        
+    ]
+
+Response
+
+    [
+        {
+            "command": "SELECT",
+            "rowCount": 1,
+            "oid": null,
+            "rows": [
+                {
+                    "eventid": 25,
+                    "user_id": 99,
+                    "eventdate": "2013-02-01T06:00:00.000Z",
+                    "eventname": "Shot with an arrow",
+                    "category": "Medical",
+                    "notes": "At least it convinced the inhabitants of Mintaka III that I an not a god."
+                },
+                {
+                    "eventid": 53,
+                    "user_id": 99,
+                    "eventdate": "2020-02-06T06:00:00.000Z",
+                    "eventname": "Borded the Enterprise",
+                    "category": "Job",
+                    "notes": ""
+                },
+                {
+                    "eventid": 54,
+                    "user_id": 99,
+                    "eventdate": "2020-02-06T06:00:00.000Z",
+                    "eventname": "Encountered the Borg",
+                    "category": "Achievement",
+                    "notes": "This should be fun"
+                }
+            ],
+            "fields": [
+                *ect..*
+               
+            ],
+            "_parsers": [
+                null,
+                null,
+            ],
+            "_types": {
+                "_types": {
+                    *ect..*
+                },
+                "text": {},
+                "binary": {}
+            },
+            "RowCtor": null,
+            "rowAsArray": false
+        }
+    ]

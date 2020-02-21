@@ -26,10 +26,10 @@ export default class YearView extends Component{
       category: '',
 			notes: '',
     }
-  }
+  };
 
   showEditFeature(event){
-    let editDate = event.eventdate.slice(0, 10)
+    let editDate = event.eventdate.slice(0, 10);
     if(this.state.edit === 'hiddenEdit'){
   	  this.setState({
 				edit: 'showEdit',
@@ -62,9 +62,9 @@ export default class YearView extends Component{
   };
 
   submitChangeEvent=(e)=>{
-	  e.preventDefault()
-    const data = new FormData(e.target)
-    const DateFormated = new Date(data.get('eventdate'))
+	  e.preventDefault();
+    const data = new FormData(e.target);
+    const DateFormated = new Date(data.get('eventdate'));
     let EditedEvent = {
       eventid: this.state.eventid,
       eventdate: DateFormated,
@@ -86,7 +86,7 @@ export default class YearView extends Component{
   };
 
   checkDateValid(event){
-    event.preventDefault()
+    event.preventDefault();
     let date = this.state.eventdate;
     let name = this.state.eventname;
     let cat = this.state.category;
@@ -122,7 +122,7 @@ export default class YearView extends Component{
   };
 
   componentDidMount(){
-    const year = this.props.match.params.year
+    const year = this.props.match.params.year;
     EventsService.getYearEvents(year)
     .then(filteredYearEvents => {
       let sorted = filteredYearEvents.rows.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
@@ -138,19 +138,17 @@ export default class YearView extends Component{
         <div className='maindiv'>
           <h4>Oops you arn't logged in!</h4>
           <div className=' oopsbutton'>
-            <Link 
-                className='button'
-                to='/'>
-                Home Page
+            <Link className='button'to='/'>
+              Home Page
             </Link>
           </div>
         </div>
       )
-    }
-    const currYear = this.props.match.params.year
-    let plusOne = parseInt(currYear)+1
-    let minusOne = parseInt(currYear)-1
-    const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other']
+    };
+    const currYear = this.props.match.params.year;
+    let plusOne = parseInt(currYear)+1;
+    let minusOne = parseInt(currYear)-1;
+    const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other'];
     return(
 	    <div className='mainYearViewDiv'>
         <div className='home_sort'>
@@ -219,4 +217,4 @@ export default class YearView extends Component{
       </div>
     )
   }
-}
+};

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import UserContext from '../../Context/user-context';
 import UsersService from '../../Services/user-api-service';
 import TokenService from '../../Services/token-service';
-import './DeleteAccount.css'
+import './DeleteAccount.css';
 
 export default class DeleteAccount extends Component {
     static contextType = UserContext;
@@ -11,8 +11,7 @@ export default class DeleteAccount extends Component {
         UsersService.deleteUser(id)
         TokenService.clearAuthToken()
         this.context.clearUserInfo()
-        
-    }
+    };
 
     render(){
         if(!sessionStorage.user_id){
@@ -28,7 +27,7 @@ export default class DeleteAccount extends Component {
                 </div>
               </div>
             )
-          }
+          };
         return(
             <div className='maindiv'>
                 <p className='deletequestion'>Are you sure you want to delete your account?</p>
@@ -38,6 +37,6 @@ export default class DeleteAccount extends Component {
                 </div>
                 
             </div>
-        )
+        );
     }
-}
+};

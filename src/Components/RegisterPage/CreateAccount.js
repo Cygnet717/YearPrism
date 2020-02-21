@@ -14,9 +14,9 @@ export default class CreateAccount extends Component {
   }
 
   handleSubmitNewUser = ev => {
-    ev.preventDefault()
-    this.setState({ error: null})
-    const { username, birthyear, password} = ev.target
+    ev.preventDefault();
+    this.setState({ error: null});
+    const { username, birthyear, password} = ev.target;
         
     UserApiService.postUser({
       username: username.value,
@@ -34,7 +34,7 @@ export default class CreateAccount extends Component {
     .catch(res => {
       this.setState({ error: res.error })
     })   
-	}
+	};
 	
   render() {
     return(
@@ -62,4 +62,4 @@ export default class CreateAccount extends Component {
   		</div>
     )
   }
-}
+};

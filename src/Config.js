@@ -5,5 +5,3 @@ export default {
     BIRTHYEAR: 'birthyear',
     USERNAME: 'username',
 }
-//https://yearprism-api.herokuapp.com/api
-//http://localhost:8000/api

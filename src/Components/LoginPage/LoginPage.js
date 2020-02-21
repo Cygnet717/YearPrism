@@ -13,7 +13,7 @@ export default class LoginPage extends Component {
       error: null, 
       thinking: false,
     }
-  }
+  };
 
   static defaultProps = {
     location: {},
@@ -29,12 +29,12 @@ export default class LoginPage extends Component {
   };
 
   handleSubmitLogin = ev => {
-    ev.preventDefault()
+    ev.preventDefault();
     this.setState({ 
       error: null,
       thinking: true,
-    })
-    const { username, password} = ev.target
+    });
+    const { username, password} = ev.target;
     UserApiService.postLogin({
       username: username.value,
       password: password.value,
@@ -52,7 +52,7 @@ export default class LoginPage extends Component {
         thinking: false,
        })
     })
-  }
+  };
 
   render() {
     return(
@@ -74,4 +74,4 @@ export default class LoginPage extends Component {
       </div>
     )
   }
-}
+};

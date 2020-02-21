@@ -29,7 +29,6 @@ function App() {
       </main>
     </UserProvider>
   );
-}
+};
 
-//cursor: progress or wait for thinking
 export default App;
