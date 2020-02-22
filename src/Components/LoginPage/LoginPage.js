@@ -8,7 +8,7 @@ import './LoginPage.css';
 export default class LoginPage extends Component {
   static contextType = UserContext;
   constructor(props){
-    super(props)
+    super(props);
     this.state = { 
       error: null, 
       thinking: false,

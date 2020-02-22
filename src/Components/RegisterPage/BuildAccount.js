@@ -9,12 +9,15 @@ import './RegisterPage.css';
 export default class BuildAccount extends Component {
   static contextType = UserContext;
   constructor(props){
-    super(props)
+    super(props);
       this.state ={
         newEvents: [],
         suggestions: 'sugghidden',
         error: null,
         thinking: false,
+        dateError: false,
+        nameError: false,
+        categoryError: false
       }
   };
 
@@ -38,35 +41,62 @@ export default class BuildAccount extends Component {
     }
   };
     
-	AddEvent(event){
+	async AddEvent(event){
     event.preventDefault();
-    this.setState({
-      newEvents: this.state.newEvents.concat({
-        eventdate: document.getElementById('eventdate').value,
-        eventname: document.getElementById('eventname').value,
-        category: document.getElementById('category').value,
-        notes: document.getElementById('notes').value
-      })
-    });
-    document.getElementById('eventdate').value ='';
-    document.getElementById('eventname').value ='';
-    document.getElementById('notes').value ='';
-    document.getElementById('category').value ='default';
+    let date = await this.checkDateValid(event);
+    let name = await this.checkNameValid(event);
+    let category = await this.checkCatValid(event);
+    if(!date && !name && !category){
+      this.setState({
+        newEvents: this.state.newEvents.concat({
+          eventdate: document.getElementById('eventdate').value,
+          eventname: document.getElementById('eventname').value,
+          category: document.getElementById('category').value,
+          notes: document.getElementById('notes').value
+        })
+      });
+      document.getElementById('eventdate').value ='';
+      document.getElementById('eventname').value ='';
+      document.getElementById('notes').value ='';
+      document.getElementById('category').value ='default';
+    }
   };
 
   checkDateValid(event){
     event.preventDefault();
     let eventdate = document.getElementById('eventdate').value;
-    let name = document.getElementById('eventname').value;
-    let cat = document.getElementById('category').value;
+    
+    
     if(eventdate < this.context.birthyear || eventdate.toString()> '2021-01-01'){
-      alert('Event date must be between birth year and present')
-    } else if(name === '') {
-      alert('Event name must be given')
-    } else if(cat === 'Select' || cat === ''){
-      alert('Please select a category')
-    } else{
-      this.AddEvent(event)
+      this.setState({ dateError: true })
+      return true
+    } else {
+      this.setState({ dateError: false })
+      return false
+    }
+  };
+
+  checkNameValid(event){
+    event.preventDefault();
+    let name = document.getElementById('eventname').value;
+    if(name === '') {
+      this.setState({ nameError: true })
+      return true
+    } else {
+      this.setState({ nameError: false })
+      return false
+    }
+  };
+
+  checkCatValid(event){
+    event.preventDefault();
+    let cat = document.getElementById('category').value;
+    if(cat === 'Select' || cat === ''){
+      this.setState({ categoryError: true })
+      return true
+    } else {
+      this.setState({ categoryError: false })
+      return false
     }
   };
 
@@ -155,10 +185,12 @@ export default class BuildAccount extends Component {
               <label>Date </label>
               <br/>
               <input type='date' id='eventdate'/>
+              {this.state.dateError? <span className='red'>Event date must be between birth year and present</span>: <></>}
               <br/>
               <label>Event name </label>
               <br/>
               <input type='text' id='eventname' size="34"/>
+              {this.state.nameError? <span className='red'>Event name must be given</span>: <></>}
               <br/>
               <label>Category </label>
               <button className='buildButton examplesbutton' onClick={(e) => this.ShowHideSugg(e)}>Examples</button>
@@ -169,12 +201,13 @@ export default class BuildAccount extends Component {
                   return <option id='category' key={i} name='category' value={i}>{i}</option>
                 })}
               </select>
+              {this.state.categoryError? <span className='red'>Please select a category</span>: <></>}
               <br/>
               <label>Notes </label>
               <br/>
               <textarea id='notes' name='notes' type='textbox' cols='37' rows='4'/>
             </div>
-              <button className='buildButton' onClick={(event) =>this.checkDateValid(event)}>Add Event</button>
+              <button className='buildButton' onClick={(event) =>this.AddEvent(event)}>Add Event</button>
           </fieldset>
         </form>
         <div role='alert'>

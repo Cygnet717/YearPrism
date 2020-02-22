@@ -7,11 +7,11 @@ import './RegisterPage.css';
 export default class CreateAccount extends Component {
   static contextType = UserContext;
   constructor(props){
-    super(props)
+    super(props);
     this.state ={
       error: null,
     }
-  }
+  };
 
   handleSubmitNewUser = ev => {
     ev.preventDefault();

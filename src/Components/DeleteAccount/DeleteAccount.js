@@ -8,9 +8,9 @@ import './DeleteAccount.css';
 export default class DeleteAccount extends Component {
     static contextType = UserContext;
     executeDeleteAccount = (id) => {
-        UsersService.deleteUser(id)
-        TokenService.clearAuthToken()
-        this.context.clearUserInfo()
+        UsersService.deleteUser(id);
+        TokenService.clearAuthToken();
+        this.context.clearUserInfo();
     };
 
     render(){

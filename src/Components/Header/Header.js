@@ -9,7 +9,7 @@ import './Header.css';
 export default class Header extends Component {
 	static contextType = UserContext;
   constructor(props){
-    super(props)
+    super(props);
     this.state = {
       burger: 'burgerhidden',
     }

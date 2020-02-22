@@ -5,7 +5,7 @@ import './RegisterPage.css';
 
 export default class RegisterPage extends Component {
   constructor(props){
-    super(props)
+    super(props);
     this.state ={
       step: 1,
     }

@@ -20,7 +20,7 @@ import otherImg from '../../Images/010-other.png';
 export default class Home extends Component {
   static contextType = UserContext;
   constructor(props){
-    super(props)
+    super(props);
     this.state ={
       key: 'hidden',
       SearchCategory: '',
