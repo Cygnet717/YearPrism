@@ -114,7 +114,7 @@ export default class YearView extends Component{
 	updatePage(year){
     EventsService.getYearEvents(year)
     .then(filteredYearEvents => {
-      let sorted = filteredYearEvents.rows.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
+      let sorted = filteredYearEvents.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
       this.setState({
         yearEvents: sorted
       })
@@ -125,7 +125,7 @@ export default class YearView extends Component{
     const year = this.props.match.params.year;
     EventsService.getYearEvents(year)
     .then(filteredYearEvents => {
-      let sorted = filteredYearEvents.rows.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
+      let sorted = filteredYearEvents.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
       this.setState({
 	      yearEvents: sorted
       })
