@@ -42,7 +42,7 @@ export default class CreateAccount extends Component {
       	<form className='form' onSubmit={this.handleSubmitNewUser}>
           <fieldset>
             <legend>Create Account</legend>
-              <label>User Name </label>
+              <label>Username </label>
               <input required type= 'text' name='username'/>
               <br/>
               <label>Birth Year</label>

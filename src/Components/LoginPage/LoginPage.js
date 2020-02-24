@@ -60,7 +60,7 @@ export default class LoginPage extends Component {
         <form className='loginform form' onSubmit={this.handleSubmitLogin}>
           <fieldset> 
             <legend>LogIn</legend>
-            User Name <input required type= 'text' name='username'/>
+            Username <input required type= 'text' name='username'/>
             <br/>
             Password <input required type= 'password' name='password'/>
             <br/>

@@ -10,6 +10,8 @@ http://yearprism.herokuapp.com/
 ## Screenshots
 ### Landing Page
 ![Landing Page](/ScreenShots/Landing.png "Landing Page")
+
+### Mobile Landing Page
 ![Mobile Landing Page](/ScreenShots/LandingMobile.png "Mobile Landing Page")
 
 ### Home Page

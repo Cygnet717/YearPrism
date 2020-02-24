@@ -18,7 +18,7 @@ export default class Header extends Component {
   renderLogInLink(){
     return (
       <div className='regLoginButtons'>
-        <Link to='/Login' className='button headerbutton'>LogIn</Link>
+        <Link to='/Login' className='button headerbutton'>Login</Link>
         <Link to='/Register' className='button headerbutton'>Register</Link>
       </div>
     )
@@ -36,7 +36,7 @@ export default class Header extends Component {
           <nav id='burgerdropdown' className={`realburger ${this.state.burger}`}> 
             <Link to='/Home' onClick={()=>{this.RenderBurgerMenu()}}>Home</Link>
             <Link to='/AddEvent' onClick={()=>{this.RenderBurgerMenu()}}>Add Event</Link>
-            <Link to='/' onClick={() => {this.logoutClick()}}>LogOut</Link>
+            <Link to='/' onClick={() => {this.logoutClick()}}>Log Out</Link>
             <Link to='/DeleteAccount' onClick={()=>{this.RenderBurgerMenu()}}>Delete Account</Link>
           </nav>
         </div>

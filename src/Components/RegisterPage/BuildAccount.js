@@ -91,7 +91,7 @@ export default class BuildAccount extends Component {
   checkCatValid(event){
     event.preventDefault();
     let cat = document.getElementById('category').value;
-    if(cat === 'Select' || cat === ''){
+    if(cat === 'Seletc' || cat === ''){
       this.setState({ categoryError: true })
       return true
     } else {
@@ -140,7 +140,7 @@ export default class BuildAccount extends Component {
     if(!sessionStorage.user_id){
       return (
         <div className='maindiv'>
-          <h4>Oops you arn't logged in!</h4>
+          <h4>Oops you aren't logged in!</h4>
           <div className=' oopsbutton'>
             <Link className='button'to='/'>
               Home Page
@@ -166,15 +166,15 @@ export default class BuildAccount extends Component {
         <div className={`falsesugg ${this.state.suggestions}`} onClick={(e) => this.ShowHideSugg(e)}>
           <div id='suggestionsdropdown' className={`truesugg`}>
             <ul className='sugg-content'>
-              <li className='sugg'><u>Achievements</u>: ran a 5K, paied off debt, bought a house, 1 year sober, ect.</li>
-              <li className='sugg'><u>Body Modifications</u>: Laser eye surgery, tattoo, piercing, ect.</li>
-              <li className='sugg'><u>Family</u>: Birth, death, adoption, marrage, divorce, ect.</li>
-              <li className='sugg'><u>Home</u>: Moving, replaced furnace, build a deck, painted a room, ect.</li>
-              <li className='sugg'><u>Job</u>: Start a new job, promotion, new title, leave job, ect.</li>
-              <li className='sugg'><u>Medical</u>: Teeth cleaning, tetanus shot, surgery, ect.</li>
-              <li className='sugg'><u>Pets</u>: Adopted/bought new pet, medical procedures, death, ect.</li>
-              <li className='sugg'><u>Relationship</u>: Start a new relationship, wedding, major milestone, end relationship, ect.</li>
-              <li className='sugglast'><u>School</u>: Start a new school, graduation, ect.</li>
+              <li className='sugg'><u>Achievements</u>: ran a 5K, paid off debt, bought a house, 1 year sober, etc.</li>
+              <li className='sugg'><u>Body Modifications</u>: Laser eye surgery, tattoo, piercing, etc.</li>
+              <li className='sugg'><u>Family</u>: Birth, death, adoption, marriage, divorce, etc.</li>
+              <li className='sugg'><u>Home</u>: Moving, replaced furnace, built a deck, painted a room, etc.</li>
+              <li className='sugg'><u>Job</u>: Start a new job, promotion, new title, leave job, etc.</li>
+              <li className='sugg'><u>Medical</u>: Teeth cleaning, tetanus shot, surgery, etc.</li>
+              <li className='sugg'><u>Pets</u>: Adopted/bought new pet, medical procedures, death, etc.</li>
+              <li className='sugg'><u>Relationship</u>: Start a new relationship, wedding, major milestone, end relationship, etc.</li>
+              <li className='sugglast'><u>School</u>: Start a new school, graduation, etc.</li>
             </ul>
           </div>
         </div>
@@ -195,13 +195,13 @@ export default class BuildAccount extends Component {
               <label>Category </label>
               <button className='buildButton examplesbutton' onClick={(e) => this.ShowHideSugg(e)}>Examples</button>
               <br/>
-              <select id='category'>
-                <option hidden defaultValue>Select</option>
+              <seletc id='category'>
+                <option hidden defaultValue>Seletc</option>
                 {categories.map(i => {
                   return <option id='category' key={i} name='category' value={i}>{i}</option>
                 })}
-              </select>
-              {this.state.categoryError? <span className='red'>Please select a category</span>: <></>}
+              </seletc>
+              {this.state.categoryError? <span className='red'>Please seletc a category</span>: <></>}
               <br/>
               <label>Notes </label>
               <br/>
