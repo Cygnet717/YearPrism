@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App rendering renders the HomePage as expected 1`] = `null`;
+
+exports[`App rendering renders the LandingPage as expected 1`] = `null`;
+
+exports[`App rendering renders the LoginPage as expected 1`] = `null`;
+
+exports[`App rendering renders the RegisterPage as expected 1`] = `null`;
+
+exports[`App rendering renders the SearchResults as expected 1`] = `null`;
+
+exports[`App rendering renders the UI as expected 1`] = `null`;
+
+exports[`App rendering renders the YearViewPage as expected 1`] = `null`;
+
+exports[`App rendering renders the footer as expected 1`] = `null`;
+
+exports[`App rendering renders the header as expected 1`] = `null`;
