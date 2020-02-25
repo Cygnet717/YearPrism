@@ -41,7 +41,7 @@ export default class BuildAccount extends Component {
     }
   };
     
-	async AddEvent(event){
+  async AddEvent(event){
     event.preventDefault();
     let date = await this.checkDateValid(event);//make sure all inputs are valid values before submitting
     let name = await this.checkNameValid(event);
@@ -100,17 +100,17 @@ export default class BuildAccount extends Component {
   };
 
   submitNewEvents() {
-		this.setState({
-			thinking: true,
-		});
+    this.setState({
+      thinking: true,
+    });
     this.state.newEvents.map(i => {
       EventsService.postNewEvent(this.context.user_id, i)
-      	.catch(res => this.setState({ 
-					error: res.error,
-					thinking: false
-				}))
-          return 'return'
-  	})
+        .catch(res => this.setState({ 
+          error: res.error,
+          thinking: false
+        }))
+        return 'return'
+    })
     if(this.state.error === null){ this.movePage() }
     return 'return'
   };

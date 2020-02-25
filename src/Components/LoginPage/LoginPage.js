@@ -20,7 +20,7 @@ export default class LoginPage extends Component {
     history: {
       push: () => {},
     },
-  }
+  };
 
   handleLoginSuccess = () => {
     const { location, history } = this.props

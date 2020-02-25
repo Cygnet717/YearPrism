@@ -17,7 +17,7 @@ export default class SearchResults extends Component{
     this.state ={
       categoryFilteredEvents: [],
       editSearched: 'hiddenEdit',
-			category: '',
+      category: '',
       eventname: '',
       eventdate: '',
       eventid: '',
@@ -96,14 +96,14 @@ export default class SearchResults extends Component{
   };
 
   changeState(e){
-		let obj={};
-		let key = e.target.name;
-		let value = e.target.value;
-		obj[key] = value;
-		this.setState( obj )
-	};
+    let obj={};
+    let key = e.target.name;
+    let value = e.target.value;
+    obj[key] = value;
+    this.setState( obj )
+  };
 
-	cancelEdit(event){
+  cancelEdit(event){
     if(event === 'showEdit'){
       this.setState({
         edit: 'hiddenEdit',
@@ -124,9 +124,9 @@ export default class SearchResults extends Component{
       let lessEvents = this.state.categoryFilteredEvents.filter(i => i.eventid !== event.eventid)
       this.setState({ categoryFilteredEvents: lessEvents })
     } else {
-    	return;
+      return;
     }
-	};
+  };
 
   componentDidMount() {
     this.filterCategoryEvents();

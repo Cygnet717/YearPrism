@@ -26,7 +26,7 @@ export default class CreateAccount extends Component {
     .then(res => {
       username.value = ''
       this.context.updateUser(res.user)
-  		TokenService.saveAuthToken(res.authToken, res.user.user_id)
+      TokenService.saveAuthToken(res.authToken, res.user.user_id)
         if(this.state.error === null){
           this.props.complete()
         }
@@ -34,8 +34,8 @@ export default class CreateAccount extends Component {
     .catch(res => {
       this.setState({ error: res.error })
     })   
-	};
-	
+  };
+
   render() {
     return(
       <div className='maindiv'>
@@ -59,7 +59,7 @@ export default class CreateAccount extends Component {
       	<div role='alert'>
           {this.state.error && <p className='red'>{this.state.error}</p>}
         </div>
-  		</div>
+      </div>
     )
   }
 };

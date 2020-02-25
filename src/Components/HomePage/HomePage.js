@@ -71,13 +71,13 @@ export default class Home extends Component {
   render(){
     if(!sessionStorage.user_id){
       return (
-				<div className='maindiv'>
+        <div className='maindiv'>
           <h4>Oops you aren't logged in!</h4>
           <div className=' oopsbutton'>
             <Link className='button'to='/'>Home Page</Link>
           </div>
-				</div>
-			)
+        </div>
+      )
     };
     const categories = ['Achievements', 'Body Modification', 'Family', 'Home', 'Job', 'Medical', 'Pets', 'Relationship', 'School', 'Vacation', 'Other'];
     return(
@@ -95,9 +95,9 @@ export default class Home extends Component {
                 return <option key={i} name='category' value={i}>{i}</option>
               })}
             </select><span> </span>
-						{this.state.SearchCategory === ''
-							? <div className='fakeGoButton'>Go</div>
-							: <Link to={`/Search/${this.state.SearchCategory}`} className='goLink'>Go</Link>
+            {this.state.SearchCategory === ''
+              ? <div className='fakeGoButton'>Go</div>
+              : <Link to={`/Search/${this.state.SearchCategory}`} className='goLink'>Go</Link>
             }
           </fieldset>
         </form>
@@ -111,7 +111,7 @@ export default class Home extends Component {
               <p><img src={jobImg} alt='Job'/> Job</p>
               <p><img src={medImg} alt='Medical'/> Medical</p>
               <p><img src={petsImg} alt='Pets'/> Pets</p>
-            	<p><img src={relationImg} alt='Relationship'/> Relationship</p>
+              <p><img src={relationImg} alt='Relationship'/> Relationship</p>
               <p><img src={schoolImg} alt='School'/> School</p>
               <p><img src={vacaImg} alt='Vacation'/> Vacation</p>
               <p><img src={otherImg} alt='Other'/>Other</p>
@@ -121,7 +121,7 @@ export default class Home extends Component {
         <div className='yearlist'>
           {this.listYearsOfLife(this.context.birthyear, this.context.events).map(i => {
             return (
-							<Link to={`/Year/${i.year}`} key={i.year} className='yearli'>
+              <Link to={`/Year/${i.year}`} key={i.year} className='yearli'>
                 <img className='arrow' src={rightArrow} alt='right arrow open year'></img>&nbsp;
                 {i.year}&nbsp;
                 {i.Achievements > 0 ? <><img src={achievImg} alt='Achievements'/>&nbsp;</>:<span/>}
@@ -135,8 +135,8 @@ export default class Home extends Component {
                 {i.School > 0 ? <><img src={schoolImg} alt='School'/>&nbsp;</>:<span/> }
                 {i.Vacation > 0 ? <><img src={vacaImg} alt='Vacation'/>&nbsp;</>:<span/>}
                 {i.Other > 0 ? <><img src={otherImg} alt='Other'/>&nbsp;</>:<span/>}
-							</Link>
-						)
+              </Link>
+            )
           })}
         </div>
         <Footer/>
