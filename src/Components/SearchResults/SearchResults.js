@@ -13,7 +13,7 @@ export default class SearchResults extends Component{
     match: { params: {}},
   };
   constructor(props){
-    super(props)
+    super(props);
     this.state ={
       categoryFilteredEvents: [],
       editSearched: 'hiddenEdit',
@@ -22,9 +22,10 @@ export default class SearchResults extends Component{
       eventdate: '',
       eventid: '',
       notes: ''
-    }
+    };
   };
 
+  //show the edit box so the user can make changes to an event
   showEditFeature(event){
     let editDate = event.eventdate.slice(0, 10);
     if(this.state.editSearched === 'hiddenEdit'){
@@ -35,22 +36,23 @@ export default class SearchResults extends Component{
         eventname: event.eventname,
         category: event.category,
         notes: event.notes,
-      })
-    } 
+      });
+    };
   };
 
+  //only show events in a particular category
   filterCategoryEvents() {
     let fEvents =[];
     this.context.events.map(i => {
       if(i.category === this.props.match.params.Category){
         fEvents = fEvents.concat(i)
-      }
+      };
       return 'return'
-    })
+    });
     let sorted = fEvents.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate));
     this.setState({
       categoryFilteredEvents: sorted
-    })
+    });
   };
 
   submitChangeEvent=(e)=>{
@@ -63,7 +65,7 @@ export default class SearchResults extends Component{
       eventname: data.get('eventname'),
       category: data.get('category'),
       notes: data.get('notes')
-    }
+    };
     EventsService.EditEvent(EditedEvent)
     .then(res => {
       const changedIndex = this.state.categoryFilteredEvents.findIndex(i => i.eventid === res[0].eventid)
@@ -72,9 +74,9 @@ export default class SearchResults extends Component{
       thing = thing.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate))
       this.setState({
         categoryFilteredEvents: thing,
-      })
-    })
-    this.cancelEdit();
+      });
+    });
+    this.cancelEdit('showEdit');
   };
 
   checkDateValid(event){
@@ -82,7 +84,7 @@ export default class SearchResults extends Component{
     let date = this.state.eventdate;
     let name = this.state.eventname;
     let cat = this.state.category;
-    if(date < this.context.birthyear || date.toString()> '2021-01-01'){
+    if(date <= this.context.birthyear || date.toString()> '2021-01-01'){
       alert('Event date must be between birth year and present')
     } else if(name === '') {
       alert('Event name must be given')
@@ -101,15 +103,19 @@ export default class SearchResults extends Component{
 		this.setState( obj )
 	};
 
-	cancelEdit(){
-    this.setState({
-      editSearched: 'hiddenEdit',
-      category: '',
-      eventname: '',
-      eventdate: '',
-      eventid: '',
-      notes: ''
-    })
+	cancelEdit(event){
+    if(event === 'showEdit'){
+      this.setState({
+        edit: 'hiddenEdit',
+        category: '',
+        eventname: '',
+        eventdate: '',
+        eventid: '',
+        notes: ''
+      });
+    } else {
+      return;
+    };
   };
 
   deleteEventClick(event){
@@ -118,12 +124,12 @@ export default class SearchResults extends Component{
       let lessEvents = this.state.categoryFilteredEvents.filter(i => i.eventid !== event.eventid)
       this.setState({ categoryFilteredEvents: lessEvents })
     } else {
-    	console.log('not deleted')
+    	return;
     }
 	};
 
   componentDidMount() {
-    this.filterCategoryEvents()
+    this.filterCategoryEvents();
   };
 
   render(){
@@ -148,7 +154,7 @@ export default class SearchResults extends Component{
           <img className='reverseIcon' src={reverse} alt='reverse order' onClick={() =>this.context.updateOrder()}/>
         </div>
           <h3 className='categheader'>{categName}</h3>
-          <div className={this.state.editSearched} onClick={() =>this.cancelEdit()}>
+          <div className={this.state.editSearched} onClick={(event) =>this.cancelEdit(event.target.className)}>
             <div  className='realform'>
               <form id='editpopup' className='edit-content' onSubmit={(e) => this.checkDateValid(e)}>
                 <label>Date </label>
@@ -170,8 +176,8 @@ export default class SearchResults extends Component{
                 <textarea id='notes' name='notes' value={this.state.notes} onChange={e => this.changeState(e)} type='textbox' cols='40' rows='4'/>
                 <br/>
                 <div className='buttonholder'>
-                  <input type='submit'/>
-                  <input type='button' onClick={() =>this.cancelEdit()} value='Cancel'/>
+                  <input className='editButton' type='submit'/>
+                  <input type='button' className='editButton' onClick={() =>this.cancelEdit('showEdit')} value='Cancel'/>
                 </div>
               </form>
             </div> 

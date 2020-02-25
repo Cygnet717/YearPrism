@@ -50,7 +50,6 @@ const EventsApiService = {
   },
 
   EditEvent(EditedEvent){
-    console.log(EditedEvent)
     return fetch(`${config.API_YearPrism}/events`, {
         method: 'PATCH',
         headers: {

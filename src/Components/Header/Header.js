@@ -7,7 +7,7 @@ import logoYP from '../../Images/LogoYP.png';
 import './Header.css';
 
 export default class Header extends Component {
-	static contextType = UserContext;
+  static contextType = UserContext;
   constructor(props){
     super(props);
     this.state = {
@@ -31,7 +31,7 @@ export default class Header extends Component {
         <img className='hamburger' 
           src={hamburger} alt='Hamburger Menu' 
           onClick={()=>{this.RenderBurgerMenu()}}>
-				</img>  
+        </img>  
         <div className={`falseburger ${this.state.burger}`} onClick={()=>this.RenderBurgerMenu()}>
           <nav id='burgerdropdown' className={`realburger ${this.state.burger}`}> 
             <Link to='/Home' onClick={()=>{this.RenderBurgerMenu()}}>Home</Link>
@@ -53,8 +53,8 @@ export default class Header extends Component {
     if(this.state.burger === 'burgerhidden'){
       this.setState({
         burger: 'burgermenu'
-    	})
-  	} else {
+      })
+    } else {
       this.setState({
         burger:'burgerhidden'
       })

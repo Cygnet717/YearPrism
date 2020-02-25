@@ -43,7 +43,7 @@ export default class BuildAccount extends Component {
     
 	async AddEvent(event){
     event.preventDefault();
-    let date = await this.checkDateValid(event);
+    let date = await this.checkDateValid(event);//make sure all inputs are valid values before submitting
     let name = await this.checkNameValid(event);
     let category = await this.checkCatValid(event);
     if(!date && !name && !category){
@@ -66,8 +66,7 @@ export default class BuildAccount extends Component {
     event.preventDefault();
     let eventdate = document.getElementById('eventdate').value;
     
-    
-    if(eventdate < this.context.birthyear || eventdate.toString()> '2021-01-01'){
+    if(eventdate <= this.context.birthyear || eventdate.toString()> '2021-01-01'){
       this.setState({ dateError: true })
       return true
     } else {
@@ -91,7 +90,7 @@ export default class BuildAccount extends Component {
   checkCatValid(event){
     event.preventDefault();
     let cat = document.getElementById('category').value;
-    if(cat === 'Seletc' || cat === ''){
+    if(cat === 'select' || cat === ''){
       this.setState({ categoryError: true })
       return true
     } else {
@@ -195,13 +194,13 @@ export default class BuildAccount extends Component {
               <label>Category </label>
               <button className='buildButton examplesbutton' onClick={(e) => this.ShowHideSugg(e)}>Examples</button>
               <br/>
-              <seletc id='category'>
-                <option hidden defaultValue>Seletc</option>
+              <select id='category'>
+                <option hidden defaultValue>Select</option>
                 {categories.map(i => {
                   return <option id='category' key={i} name='category' value={i}>{i}</option>
                 })}
-              </seletc>
-              {this.state.categoryError? <span className='red'>Please seletc a category</span>: <></>}
+              </select>
+              {this.state.categoryError? <span className='red'>Please select a category</span>: <></>}
               <br/>
               <label>Notes </label>
               <br/>

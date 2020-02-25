@@ -47,18 +47,20 @@ export default class YearView extends Component{
 		let key = e.target.name;
 		let value = e.target.value;
 		obj[key] = value;
-		this.setState( obj )
+		this.setState( obj );
 	};
 
-  cancelEdit(){
-    this.setState({
-      edit: 'hiddenEdit',
-		  category: '',
-      eventname: '',
-      eventdate: '',
-      eventid: '',
-      notes: ''
-    })
+  cancelEdit(event){
+    if(event === 'showEdit'){
+      this.setState({
+        edit: 'hiddenEdit',
+        category: '',
+        eventname: '',
+        eventdate: '',
+        eventid: '',
+        notes: ''
+      });
+    };
   };
 
   submitChangeEvent=(e)=>{
@@ -71,7 +73,7 @@ export default class YearView extends Component{
       eventname: data.get('eventname'),
       category: data.get('category'),
       notes: data.get('notes')
-    }
+    };
     EventsService.EditEvent(EditedEvent)
     .then(res => {
       const changedIndex = this.state.yearEvents.findIndex(i => i.eventid === res[0].eventid)
@@ -81,16 +83,17 @@ export default class YearView extends Component{
       this.setState({
         yearEvents: thing,
       })
-    })
-    this.cancelEdit()
+    });
+    this.cancelEdit('showEdit');
   };
 
+  //check that all changed data is valid before submitting to db
   checkDateValid(event){
     event.preventDefault();
     let date = this.state.eventdate;
     let name = this.state.eventname;
     let cat = this.state.category;
-    if(date < this.context.birthyear || date.toString()> '2021-01-01'){
+    if(date <= this.context.birthyear || date.toString()> '2021-01-01'){
       alert('Event date must be between birth year and present')
     } else if(name === '') {
       alert('Event name must be given')
@@ -107,7 +110,7 @@ export default class YearView extends Component{
       let lessEvents = this.state.yearEvents.filter(i => i.eventid !== event.eventid)
       this.setState({ yearEvents: lessEvents })
       } else {
-        console.log('not deleted')
+        return;
       }
   };
 
@@ -164,7 +167,7 @@ export default class YearView extends Component{
             {plusOne}<img src={nextImg} alt='next'/>
           </Link>
         </div>
-        <div className={this.state.edit} onClick={() => this.cancelEdit()}>
+        <div className={this.state.edit} onClick={(event) => this.cancelEdit(event.target.classname)}>
           <div  className='realform'>
             <form id='editpopup' className='edit-content' onSubmit={(e) => this.checkDateValid(e)}>
               <label>Date </label>
@@ -186,8 +189,8 @@ export default class YearView extends Component{
               <textarea id='notes' name='notes' value={this.state.notes} onChange={e => this.changeState(e)} type='textbox' cols='36' rows='4'/>
               <br/>
               <div className='buttonholder'>
-                <input type='submit'/>
-                <input type='button' onClick={() =>this.cancelEdit()} value='Cancel'/>
+                <input className='editButton' type='submit'/>
+                <input type='button' className='editButton' onClick={() =>this.cancelEdit('showEdit')} value='Cancel'/>
               </div>
             </form>
           </div> 
