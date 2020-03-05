@@ -46,13 +46,16 @@
 .truesugg{
   position: fixed;
   z-index: 1;
-  width: fit-content; 
-  top: 110px;
-
+  width: 580px; 
+  top: 140px;
+  left: 50%;
+  margin-left: -290px;
   height: fit-content;
   overflow: auto; 
   border: 1px solid #DBDBDB;
+  border-radius: 5px;
   background-color: #37647B; 
+  box-shadow: 10px 10px 5px rgba(22, 35, 41, 0.911);
 }
 
 .falsesugg{
