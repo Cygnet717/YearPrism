@@ -19,4 +19,18 @@
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    animation: fadeSlideIn 1.5s;
+}
+
+
+@keyframes fadeSlideIn {
+    from{
+        opacity: 0;
+        top: 20px
+    }
+    to{
+        opacity: 1;
+        top: 0;
+    }
 }
