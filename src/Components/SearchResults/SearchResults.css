@@ -1,5 +1,6 @@
 .categheader{
     text-align: center;
+    font-family: 'Quicksand', sans-serif;
 }
 .indivevent{
     display: flex;
@@ -8,6 +9,7 @@
     color: #DBDBDB;
     margin-left: 20px;
     margin-right: 20px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .eventbox{
@@ -34,6 +36,10 @@
 .NtoO{
     display: flex;
     flex-direction: column-reverse;
+}
+
+.homenavlink{
+    font-family: 'Quicksand', sans-serif;
 }
 
 .home_sort{

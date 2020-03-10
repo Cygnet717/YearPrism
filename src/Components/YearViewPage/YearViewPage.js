@@ -169,23 +169,22 @@ export default class YearView extends Component{
         </div>
         <div className={this.state.edit} onClick={(event) => this.cancelEdit(event.target.classname)}>
           <div  className='realform'>
+            <h5 className='editTitle'>Edit Event</h5>
             <form id='editpopup' className='edit-content' onSubmit={(e) => this.checkDateValid(e)}>
+
               <label>Date </label>
               <input type='date' name='eventdate' id='eventdate' value={this.state.eventdate} onChange={e => this.changeState(e)}/>
-              <br/>
-              <label>Event name</label>
-              <br/>
-              <input type='text' name='eventname' id='eventname' value={this.state.eventname} onChange={e => this.changeState(e)} size="34"/>
-              <br/>
+              
+              <label>Event name </label>
+              <input type='text' name='eventname' id='eventname' value={this.state.eventname} onChange={e => this.changeState(e)} size="26"/>
+              
               <label>Category </label>
               <select id='category' name='category' value={categories.find(cat => cat === this.state.category)} onChange={e => this.changeState(e)}>
                 {categories.map(cat => {
                   return <option id='category' key={cat} name='category' value={cat}>{cat}</option>
                 })}
               </select>
-              <br/>
               <label>Notes</label>
-              <br/>
               <textarea id='notes' name='notes' value={this.state.notes} onChange={e => this.changeState(e)} type='textbox' cols='36' rows='4'/>
               <br/>
               <div className='buttonholder'>
